@@ -6,21 +6,46 @@ import edu.co.unisabana.mievento.entities.reserva.Reserva;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-
+@NoArgsConstructor
 
 @Table(name = "CLIENTES")
 @Entity
-public class Cliente extends Usuario {
-    public Cliente(String nombre, String apellido, int edad) {
-        super(edad, edad, apellido, nombre, apellido, apellido, apellido, apellido);
-        //TODO Auto-generated constructor stub
+public class Cliente {
+    @Id
+    private int documento;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String direccion;
+    private String correo;
+    public int getDocumento() {
+        return documento;
     }
-
-    private ArrayList<Reserva> reservas;
+    public String getNombre() {
+        return nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+    public String getTelefono() {
+        return telefono;
+    }
+    public String getDireccion() {
+        return direccion;
+    }
+    public String getCorreo() {
+        return correo;
+    }
+    public String getMetodopago() {
+        return metodopago;
+    }
+    private String metodopago;
 }

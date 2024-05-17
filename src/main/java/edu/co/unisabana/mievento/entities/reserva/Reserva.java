@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-@Entity
+
 public class Reserva {
     private Lugar lugar;
     private Evento evento;

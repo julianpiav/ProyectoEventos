@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-@Entity
+
 
 public abstract class Lugar {
 }

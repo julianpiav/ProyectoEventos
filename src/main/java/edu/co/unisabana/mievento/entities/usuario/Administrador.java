@@ -8,11 +8,10 @@ import lombok.Setter;
 @Setter
 
 
-@Entity
-public class Administrador extends Usuario {
 
-    public Administrador(String nombre, String apellido, int edad) {
-        super(edad, edad, apellido, nombre, apellido, apellido, apellido, apellido);
-        //TODO Auto-generated constructor stub
+public class Administrador extends Usuario {
+    public Administrador(int documento, int edad, String nombre, String apellido, String telefono, String direccion,
+            String correo, String metodopago) {
+        super();
     }
 }

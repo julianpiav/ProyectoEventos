@@ -13,6 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-@Entity
 public abstract class Artista extends Personal {
 }

@@ -9,8 +9,5 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-
-@Entity
-
 public abstract class Personal {
 }

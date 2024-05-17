@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 
 
-@Entity
+
 public class Boda {
 }
