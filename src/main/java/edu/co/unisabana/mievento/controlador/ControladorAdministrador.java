@@ -1,7 +1,7 @@
 package edu.co.unisabana.mievento.controlador;
 
-import edu.co.unisabana.mievento.entidades.usuario.Cliente;
-import edu.co.unisabana.mievento.entidades.personal.Personal;
+import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.servicio.ServicioCliente;
 import edu.co.unisabana.mievento.servicio.ServicioPersonal;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package edu.co.unisabana.mievento.controlador;
 
-import edu.co.unisabana.mievento.entidades.personal.Personal;
-import edu.co.unisabana.mievento.entidades.reserva.Reserva;
+import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.reserva.Reserva;
 import edu.co.unisabana.mievento.servicio.ServicioReserva;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

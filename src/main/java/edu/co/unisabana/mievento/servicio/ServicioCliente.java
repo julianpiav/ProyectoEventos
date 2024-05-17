@@ -1,7 +1,8 @@
 package edu.co.unisabana.mievento.servicio;
 
-import edu.co.unisabana.mievento.entidades.usuario.Cliente;
 import org.springframework.stereotype.Service;
+
+import edu.co.unisabana.mievento.entities.usuario.Cliente;
 
 import java.util.List;
 

@@ -1,8 +1,9 @@
 package edu.co.unisabana.mievento.servicio;
 
-import edu.co.unisabana.mievento.entidades.personal.Personal;
-import edu.co.unisabana.mievento.entidades.reserva.Reserva;
 import org.springframework.stereotype.Service;
+
+import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.reserva.Reserva;
 
 import java.util.List;
 
