@@ -13,4 +13,6 @@ import lombok.Setter;
 
 
 public abstract class Lugar {
+
+    
 }
