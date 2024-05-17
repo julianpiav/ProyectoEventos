@@ -29,28 +29,12 @@ import lombok.Setter;
 @Entity
 public class Reserva {
     @Id
-    @Column(name = "id")
     private Long idReserva;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "idLugar", nullable = false)
-    private Lugar lugar;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idEvento", nullable = false)
-    private Evento evento;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPersonal", nullable = true)
-    private Personal logistica;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idArtista", nullable = true)
-    private Artista musica;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "idCocina", nullable = true)
-    private Cocina comida;
-
+    private String lugar;
+    private String tipoEvento;
+    private String musica;
+    private String comida;
+    private String seguridad;
+    private String direccion;
     private String fecha;
 }
