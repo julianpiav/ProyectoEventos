@@ -7,6 +7,8 @@ import edu.co.unisabana.mievento.entities.reserva.lugar.Lugar;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,12 +24,15 @@ public class Reserva {
     @Id
     @Column(name = "id")
     private Long idReserva;
-    private String lugar;
-    private String evento;
+
+    @ManyToOne
+    @JoinColumn(name = "idLugar")
+    private Lugar lugar;
+
+    private Evento evento;
     private String musica;
     private String comida;
     private String seguridad;
     private String direccion;
     private String fecha;
-
 }
