@@ -26,6 +26,7 @@ public class Cliente {
     private String telefono;
     private String direccion;
     private String correo;
+    private String metodopago;
     public int getDocumento() {
         return documento;
     }
@@ -47,5 +48,5 @@ public class Cliente {
     public String getMetodopago() {
         return metodopago;
     }
-    private String metodopago;
+
 }
