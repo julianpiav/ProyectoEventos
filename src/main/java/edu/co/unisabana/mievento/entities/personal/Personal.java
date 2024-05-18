@@ -22,7 +22,7 @@ public class Personal {
     private String apellido;
     private String contacto;
     private boolean disponible;
-    public Integer getIdPersonal() {
+    public Integer getidPersonal() {
         return idPersonal;
     }
     public String getNombre() {

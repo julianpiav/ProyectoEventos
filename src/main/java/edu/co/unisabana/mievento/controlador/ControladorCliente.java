@@ -4,6 +4,7 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.reserva.Reserva;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.repository.IClientRepository;
+import edu.co.unisabana.mievento.repository.IPersonalRepository;
 import edu.co.unisabana.mievento.servicio.ServicioPersonal;
 import edu.co.unisabana.mievento.servicio.ServicioReserva;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class ControladorCliente {
 
     @Autowired
     private IClientRepository clientRepository;
+
+    @Autowired
+    private IPersonalRepository PersonalRepository;
 
     // Endpoints para reservas
     @GetMapping(path = "/reservas/todos")
@@ -106,9 +110,9 @@ public class ControladorCliente {
     }
 
     @PostMapping(path = "/personal/guardar")
-    public ResponseEntity<String> guardarPersonal(@RequestBody Personal personal) {
-        servicioPersonal.guardarOEditarPersonal(personal);
-        return new ResponseEntity<>("Personal guardado con éxito", HttpStatus.CREATED);
+    public ResponseEntity<Boolean> guardarPersonal(@RequestBody Personal personal) {
+        PersonalRepository.save(personal);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
     
