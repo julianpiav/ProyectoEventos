@@ -19,4 +19,5 @@ public abstract class Personal {
     private String apellido;
     private String contacto;
     private boolean disponible;
+
 }

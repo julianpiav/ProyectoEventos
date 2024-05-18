@@ -14,4 +14,18 @@ import lombok.Setter;
 
 public class Rumba extends Evento{
 
+    @Override
+    public void identificarLogistica() {
+
+    }
+
+    @Override
+    public void identificarCocina() {
+
+    }
+
+    @Override
+    public void identificarPersonal() {
+
+    }
 }

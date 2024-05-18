@@ -1,11 +1,13 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import edu.co.unisabana.mievento.entities.personal.Personal;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -24,4 +26,11 @@ public abstract class Evento {
     private String tipoMusica;
     private boolean dj;
     private boolean orquesta;
+    @OneToMany
+    private ArrayList<Personal> personal;
+
+    public abstract void identificarLogistica();
+    public abstract void identificarCocina();
+    public abstract void identificarPersonal();
+
 }

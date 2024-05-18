@@ -17,4 +17,18 @@ public class QuinceAnos extends Evento{
     private String cumpleañera;
 
 
+    @Override
+    public void identificarLogistica() {
+
+    }
+
+    @Override
+    public void identificarCocina() {
+
+    }
+
+    @Override
+    public void identificarPersonal() {
+
+    }
 }

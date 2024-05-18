@@ -34,11 +34,12 @@ public class Reserva {
     @Id
     private Long idReserva;
     private String lugar;
-    private String tipoEvento;
     private String musica;
     private String comida;
-    private String seguridad;
     private String direccion;
     private String fecha;
     protected String metodoPago;
+    @OneToOne
+    private Evento evento;
+
 }
