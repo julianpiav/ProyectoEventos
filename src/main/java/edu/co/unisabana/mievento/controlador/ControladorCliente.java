@@ -2,6 +2,8 @@ package edu.co.unisabana.mievento.controlador;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.reserva.Reserva;
+import edu.co.unisabana.mievento.entities.usuario.Cliente;
+import edu.co.unisabana.mievento.repository.IClientRepository;
 import edu.co.unisabana.mievento.servicio.ServicioReserva;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class ControladorCliente {
 
     @Autowired
     private ServicioReserva servicioReserva;
+
+    @Autowired
+	private IClientRepository clientRepository;
 
     @GetMapping(path = "/reservas/todos")
     public ResponseEntity<List<Reserva>> obtenerReserva() {
@@ -41,5 +46,11 @@ public class ControladorCliente {
     public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") Long id) {
         servicioReserva.eliminarReserva(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PostMapping("/usuario/registro")
+    public ResponseEntity<Boolean> addClient(@RequestBody Cliente cliente){
+        clientRepository.save(cliente);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

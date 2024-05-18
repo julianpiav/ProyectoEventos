@@ -24,9 +24,7 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String telefono;
-    private String direccion;
     private String correo;
-    private String metodopago;
     public int getDocumento() {
         return documento;
     }
@@ -39,14 +37,8 @@ public class Cliente {
     public String getTelefono() {
         return telefono;
     }
-    public String getDireccion() {
-        return direccion;
-    }
     public String getCorreo() {
         return correo;
-    }
-    public String getMetodopago() {
-        return metodopago;
     }
 
 }

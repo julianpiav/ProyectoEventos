@@ -37,4 +37,5 @@ public class Reserva {
     private String seguridad;
     private String direccion;
     private String fecha;
+    protected String metodoPago;
 }

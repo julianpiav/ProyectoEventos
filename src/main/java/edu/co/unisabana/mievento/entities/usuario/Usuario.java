@@ -15,13 +15,13 @@ import lombok.Setter;
 @Entity
 public abstract class Usuario {
     @Id
-    private int documento;
-    private int edad;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String direccion;
-    private String correo;
+    protected int documento;
+    protected int edad;
+    protected String nombre;
+    protected String apellido;
+    protected String telefono;
+    protected String direccion;
+    protected String correo;
     public int getDocumento() {
         return documento;
     }
@@ -46,5 +46,5 @@ public abstract class Usuario {
     public String getMetodopago() {
         return metodopago;
     }
-    private String metodopago;
+    protected String metodopago;
 }
