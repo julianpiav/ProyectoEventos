@@ -18,11 +18,11 @@ public class Firebase{
     public void inicializarFirebase(){
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("./mievento-fc0b2-firebase-adminsdk-5neht-1de4a61a28.json");
+                    new FileInputStream("");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .setDatabaseUrl("https://mievento-fc0b2-default-rtdb.firebaseio.com")
+                    .setDatabaseUrl("")
                     .build();
 
             FirebaseApp.initializeApp(options);
