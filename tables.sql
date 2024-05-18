@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS RESERVA (
     );
 
 
-
+INSERT INTO PERSONAL (nombre, apellido, contacto, disponible)
+VALUES ('Juan', 'Perez', 'juan.perez@example.com', 1);
 
 INSERT INTO CLIENTES (documento, nombre, apellido, telefono, direccion, correo, metodopago) VALUES (123456789, 'John', 'Doe', '1234567890', '123 Main St', 'john.doe@example.com', 'Credit Card'), (987654321, 'Jane', 'Smith', '9876543210', '456 Elm St', 'jane.smith@example.com', 'PayPal'), (456789123, 'Alice', 'Johnson', '4567891230', '789 Oak St', 'alice.johnson@example.com', 'Cash');
