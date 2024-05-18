@@ -14,6 +14,5 @@ public class Artista extends Personal {
     private int idArtista;
     private String generoArtistico; // Podría ser "Música", "Danza", "Magia", etc.
     private String estilo; // Por ejemplo, si el género artístico es "Música", el estilo podría ser "Rock", "Pop", "Clásico", etc.
-    private String portfolio; // Un enlace a su trabajo previo, si está disponible en línea.
     private int experienciaAños;
 }
