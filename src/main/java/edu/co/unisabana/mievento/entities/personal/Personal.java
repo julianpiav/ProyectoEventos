@@ -17,7 +17,6 @@ public abstract class Personal {
     private Long idPersonal;
     private String nombre;
     private String apellido;
-    private String cargo; // Podría ser "Camarero", "Seguridad", "DJ", etc.
     private String contacto;
     private boolean disponible;
 }
