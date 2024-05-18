@@ -19,7 +19,7 @@ public class ServicioPersonal {
     }
 
     public void guardarOEditarPersonal(Personal personal) {
-
+        
     }
     public void eliminarPersonal(Long id) {
 
