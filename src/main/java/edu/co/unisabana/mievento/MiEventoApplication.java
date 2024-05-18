@@ -49,8 +49,10 @@ public class MiEventoApplication {
 		return args -> {
 			clientRepository.findAll().forEach(cliente-> {
 				log.info(cliente.getNombre());
-				log.info(personalRepository.findAll().toString());
+				
 			});
+
+			personalRepository.findAll().toString();
 		};
 	}
 }
