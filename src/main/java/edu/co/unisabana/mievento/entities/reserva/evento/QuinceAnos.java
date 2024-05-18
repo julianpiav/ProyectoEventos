@@ -13,5 +13,8 @@ import lombok.Setter;
 
 
 
-public class QuinceAnos {
+public class QuinceAnos extends Evento{
+    private String cumpleañera;
+
+
 }

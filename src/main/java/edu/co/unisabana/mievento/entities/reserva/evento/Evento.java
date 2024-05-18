@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
+@AllArgsConstructor
+@NoArgsConstructor
 public abstract class Evento {
     @Id
     private Long idEvento;
@@ -18,17 +20,8 @@ public abstract class Evento {
     private String fecha;
     private String horaInicio;
     private String horaFin;
-    private String tipo; // Podría ser "Concierto", "Conferencia", "Fiesta", etc.
     private int capacidadMaxima;
-    public Evento(Long idEvento, String nombre, String descripcion, String fecha, String horaInicio, String horaFin,
-            String tipo, int capacidadMaxima) {
-        this.idEvento = idEvento;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.fecha = fecha;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
-        this.tipo = tipo;
-        this.capacidadMaxima = capacidadMaxima;
-    }
+    private String tipoMusica;
+    private boolean dj;
+    private boolean orquesta;
 }

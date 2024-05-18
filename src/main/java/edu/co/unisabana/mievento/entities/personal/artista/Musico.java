@@ -4,13 +4,15 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
-public class Musico extends Personal {
+@NoArgsConstructor
+public class Musico extends Artista {
     private String instrumentoPrincipal;
-    private String generoMusical; // Podría ser "Rock", "Pop", "Clásico", etc.
+    private String generoMusical;
 }

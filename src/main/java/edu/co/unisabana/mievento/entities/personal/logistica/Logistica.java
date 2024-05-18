@@ -4,12 +4,16 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public abstract class Logistica extends Personal {
-    private String areaEspecializacion; // Podría ser "Transporte", "Montaje", "Desmontaje", etc.
+    private ArrayList<String> implementos;
 }

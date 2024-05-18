@@ -12,5 +12,6 @@ import lombok.Setter;
 
 
 
-public class Rumba {
+public class Rumba extends Evento{
+
 }
