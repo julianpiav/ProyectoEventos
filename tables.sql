@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS RESERVA (
     seguridad TEXT,
     direccion TEXT NOT NULL,
     fecha TEXT NOT NULL
-    
     );
 
 
