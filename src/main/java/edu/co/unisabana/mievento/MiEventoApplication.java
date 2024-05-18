@@ -52,7 +52,9 @@ public class MiEventoApplication {
 				
 			});
 
-			personalRepository.findAll().toString();
+			personalRepository.findAll().forEach(personal ->{
+				log.info(personal.getApellido());
+			});
 		};
 	}
 }
