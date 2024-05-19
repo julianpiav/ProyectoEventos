@@ -50,5 +50,12 @@ public class Personal {
     private String nombre;
     private String apellido;
     private String contacto;
+    public String getCargo() {
+        return cargo;
+    }
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
     private boolean disponible;
+    private String cargo;
 }

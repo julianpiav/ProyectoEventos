@@ -53,15 +53,6 @@ public class ControladorAdministrador {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
- /*
-    @PostMapping(path = "/personal/guardar")
-    public ResponseEntity<String> guardarPersonal(@RequestBody Personal personal) {
-        //servicioPersonal.guardarOEditarPersonal(personal);
-        return new ResponseEntity<>("Personal guardado con Exito", HttpStatus.CREATED);
-    }
-  */
-
     //Funciona
     @PutMapping(path = "/personal/modificar/{id}")
     public ResponseEntity<Personal> modificarPersonal(@PathVariable("id") int id, @RequestBody Personal personal) {
