@@ -4,8 +4,7 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.reserva.Reserva;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.repository.IClientRepository;
-import edu.co.unisabana.mievento.servicio.ServicioPersonal;
-import edu.co.unisabana.mievento.servicio.ServicioReserva;
+import edu.co.unisabana.mievento.repository.IPersonalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,45 +17,44 @@ import java.util.List;
 @RequestMapping(path = "api/v1/cliente")
 public class ControladorCliente {
 
-    @Autowired
-    private ServicioReserva servicioReserva;
-
-    @Autowired
-    private ServicioPersonal servicioPersonal;
 
     @Autowired
     private IClientRepository clientRepository;
 
+    @Autowired
+    private IPersonalRepository PersonalRepository;
+
+    /*
     // Endpoints para reservas
     @GetMapping(path = "/reservas/todos")
     public ResponseEntity<List<Reserva>> obtenerReserva() {
-        List<Reserva> reservas = servicioReserva.obtenerReservas();
+        //List<Reserva> reservas = servicioReserva.obtenerReservas();
         return new ResponseEntity<>(reservas, HttpStatus.OK);
     }
 
     @GetMapping(path = "/reserva/{id}")
     public ResponseEntity<Reserva> obtenerReserva(@PathVariable("id") Long id) {
-        Reserva reserva = servicioReserva.obtenerReservaPorId(id);
+        //Reserva reserva = servicioReserva.obtenerReservaPorId(id);
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
 
     @PostMapping(path = "/reserva/guardar")
     public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
-        servicioReserva.guardarOEditarReserva(reserva);
+        //servicioReserva.guardarOEditarReserva(reserva);
         return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/reserva/modificar")
     public ResponseEntity<String> modificarReserva(@RequestBody Reserva reserva) {
-        servicioReserva.guardarOEditarReserva(reserva);
+        //servicioReserva.guardarOEditarReserva(reserva);
         return new ResponseEntity<>("Reserva modificada con éxito", HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/reserva/delete/{id}")
     public ResponseEntity<Void> eliminarReserva(@PathVariable("id") Long id) {
-        servicioReserva.eliminarReserva(id);
+        //servicioReserva.eliminarReserva(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+    } */
 
     // Endpoints para usuarios
     @PostMapping(path = "/usuario/registro")
@@ -91,37 +89,11 @@ public class ControladorCliente {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-
-    // Endpoints para personal
-    @GetMapping(path = "/personal/todos")
-    public ResponseEntity<List<Personal>> obtenerTodoElPersonal() {
-        List<Personal> personal = servicioPersonal.obtenerPersonal();
-        return new ResponseEntity<>(personal, HttpStatus.OK);
-    }
-
-    @GetMapping(path = "/personal/{id}")
-    public ResponseEntity<Personal> obtenerPersonalPorId(@PathVariable("id") Long id) {
-        Personal personal = servicioPersonal.obtenerPersonalPorId(id);
-        return new ResponseEntity<>(personal, HttpStatus.OK);
-    }
-
+    //funciona
     @PostMapping(path = "/personal/guardar")
-    public ResponseEntity<String> guardarPersonal(@RequestBody Personal personal) {
-        servicioPersonal.guardarOEditarPersonal(personal);
-        return new ResponseEntity<>("Personal guardado con éxito", HttpStatus.CREATED);
+    public ResponseEntity<Boolean> guardarPersonal(@RequestBody Personal personal) {
+        PersonalRepository.save(personal);
+        return new ResponseEntity<>(true, HttpStatus.OK);
     }
 
-    
-
-    @PutMapping(path = "/personal/modificar")
-    public ResponseEntity<String> modificarPersonal(@RequestBody Personal personal) {
-        servicioPersonal.guardarOEditarPersonal(personal);
-        return new ResponseEntity<>("Personal modificado con éxito", HttpStatus.OK);
-    }
-
-    @DeleteMapping(path = "/personal/delete/{id}")
-    public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") Long id) {
-        servicioPersonal.eliminarPersonal(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 }

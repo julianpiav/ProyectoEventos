@@ -5,6 +5,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 
 import edu.co.unisabana.mievento.repository.IClientRepository;
+import edu.co.unisabana.mievento.repository.IPersonalRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,8 @@ import java.util.Objects;
 public class MiEventoApplication {
 	@Autowired
 	private IClientRepository clientRepository;
+	@Autowired
+	private IPersonalRepository personalRepository;
 	private static final Logger log = LoggerFactory.getLogger(MiEventoApplication.class);
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(MiEventoApplication.class, args);
@@ -47,6 +50,10 @@ public class MiEventoApplication {
 			clientRepository.findAll().forEach(cliente-> {
 				log.info(cliente.getNombre());
 				
+			});
+
+			personalRepository.findAll().forEach(personal ->{
+				log.info(personal.getApellido());
 			});
 		};
 	}

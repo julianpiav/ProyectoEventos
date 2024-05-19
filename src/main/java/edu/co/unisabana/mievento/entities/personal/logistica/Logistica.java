@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-@Entity
+
 @Getter
 @Setter
 @AllArgsConstructor
