@@ -109,6 +109,7 @@ public class ControladorCliente {
         return new ResponseEntity<>(personal, HttpStatus.OK);
     }
 
+    //funciona
     @PostMapping(path = "/personal/guardar")
     public ResponseEntity<Boolean> guardarPersonal(@RequestBody Personal personal) {
         PersonalRepository.save(personal);

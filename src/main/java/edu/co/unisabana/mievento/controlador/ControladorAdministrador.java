@@ -25,6 +25,7 @@ public class ControladorAdministrador {
     @Autowired
     private IPersonalRepository servicioPersonal;
     
+    //Ya funciona
     @GetMapping(path = "/getUsers")
     public ResponseEntity<List<Cliente>> obtenerClientes() {
         List<Cliente> clienteList = new ArrayList<>(); // Fix the issue by importing ArrayList
@@ -33,7 +34,7 @@ public class ControladorAdministrador {
         return new ResponseEntity<>(clienteList, HttpStatus.OK);
     }
 
-
+    //Ya funciona
     @GetMapping(path = "/getPersonal")
     public ResponseEntity<List<Personal>> obtenerPersonal() {
         List<Personal> personalList = new ArrayList<>();
@@ -42,6 +43,7 @@ public class ControladorAdministrador {
         return new ResponseEntity<>(personalList, HttpStatus.OK);
     }
 
+    //Ya funciona
     @GetMapping(path = "/personal/{id}")
     public ResponseEntity<Personal> obtenerPersonalPorId(@PathVariable("id") int id) {
         Optional<Personal> optionalPersonal = servicioPersonal.findById(id);
@@ -52,7 +54,7 @@ public class ControladorAdministrador {
         }
     }
 
-
+    
     @PostMapping(path = "/personal/guardar")
     public ResponseEntity<String> guardarPersonal(@RequestBody Personal personal) {
         //servicioPersonal.guardarOEditarPersonal(personal);
