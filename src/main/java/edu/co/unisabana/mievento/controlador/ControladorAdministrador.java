@@ -2,12 +2,10 @@ package edu.co.unisabana.mievento.controlador;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
-import edu.co.unisabana.mievento.entities.usuario.Usuario;
 import edu.co.unisabana.mievento.repository.IClientRepository;
 import edu.co.unisabana.mievento.repository.IPersonalRepository;
 
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,11 +45,8 @@ public class ControladorAdministrador {
     @GetMapping(path = "/personal/{id}")
     public ResponseEntity<Personal> obtenerPersonalPorId(@PathVariable("id") int id) {
         Optional<Personal> optionalPersonal = personalRepository.findById(id);
-        if (optionalPersonal.isPresent()) {
-            return new ResponseEntity<>(optionalPersonal.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return optionalPersonal.map(personal -> new ResponseEntity<>(personal, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
  /*

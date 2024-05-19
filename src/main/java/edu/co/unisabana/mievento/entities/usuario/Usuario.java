@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Getter
 @Entity
 public abstract class Usuario {
     @Id
@@ -22,29 +22,5 @@ public abstract class Usuario {
     protected String telefono;
     protected String direccion;
     protected String correo;
-    public int getDocumento() {
-        return documento;
-    }
-    public int getEdad() {
-        return edad;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public String getApellido() {
-        return apellido;
-    }
-    public String getTelefono() {
-        return telefono;
-    }
-    public String getDireccion() {
-        return direccion;
-    }
-    public String getCorreo() {
-        return correo;
-    }
-    public String getMetodopago() {
-        return metodopago;
-    }
     protected String metodopago;
 }

@@ -4,7 +4,9 @@ import edu.co.unisabana.mievento.entities.reserva.evento.Boda;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
 import edu.co.unisabana.mievento.entities.reserva.evento.QuinceAnos;
 import edu.co.unisabana.mievento.entities.reserva.evento.Rumba;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FabricaEventos {
     public  Evento prepararEvento(Evento evento) {
         if (evento instanceof Boda boda){

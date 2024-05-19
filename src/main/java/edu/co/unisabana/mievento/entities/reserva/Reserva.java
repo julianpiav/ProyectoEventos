@@ -8,15 +8,7 @@ import edu.co.unisabana.mievento.entities.personal.cocina.Cocina;
 import edu.co.unisabana.mievento.entities.personal.logistica.Logistica;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
 import edu.co.unisabana.mievento.entities.reserva.lugar.Lugar;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +24,7 @@ import lombok.Setter;
 
 public class Reserva {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
     private String lugar;
     private String musica;
