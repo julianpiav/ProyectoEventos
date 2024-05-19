@@ -1,23 +1,36 @@
 package edu.co.unisabana.mievento.factory.personalRumba;
 
+import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.PersonalLogistica;
-import edu.co.unisabana.mievento.entities.personal.logistica.Logistica;
+import edu.co.unisabana.mievento.entities.personal.logistica.Todero;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class PersonalLogisticaRumba implements PersonalLogistica {
+
     @Override
-    public void agregarPersonalPequeno(ArrayList<Logistica> logisticaPequena) {
+    public ArrayList<Personal> obtenerPersonalPequeno(ArrayList<Personal> personal) {
+        return personal.stream()
+                .filter(p -> p instanceof Todero &&  p.isDisponible())
+                .limit(4)
+                .collect(Collectors.toCollection(ArrayList::new));
 
     }
 
     @Override
-    public void agregarPersonalMediano(ArrayList<Logistica> logisticaMediana) {
-
+    public ArrayList<Personal> obtenerPersonalMediano(ArrayList<Personal> personal) {
+        return personal.stream()
+                .filter(p -> p instanceof Todero &&  p.isDisponible())
+                .limit(8)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 
     @Override
-    public void agregarPersonalGrande(ArrayList<Logistica> logisticaGrande) {
-
+    public ArrayList<Personal> obtenerPersonalGrande(ArrayList<Personal> personal) {
+        return personal.stream()
+                .filter(p -> p instanceof Todero &&  p.isDisponible())
+                .limit(12)
+                .collect(Collectors.toCollection(ArrayList::new));
     }
 }

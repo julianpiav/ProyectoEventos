@@ -14,5 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Musico extends Artista {
     private String instrumentoPrincipal;
-    private String generoMusical;
+    private TipoMusica generoMusical;
+
 }

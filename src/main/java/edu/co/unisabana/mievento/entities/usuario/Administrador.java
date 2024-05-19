@@ -1,15 +1,22 @@
 package edu.co.unisabana.mievento.entities.usuario;
 
+import edu.co.unisabana.mievento.entities.personal.Personal;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 @Getter
 @Setter
-
-
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Administrador {
     @Id
     private int documento;
@@ -17,20 +24,6 @@ public class Administrador {
     private String apellido;
     private String telefono;
     private String correo;
-    public int getDocumento() {
-        return documento;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public String getApellido() {
-        return apellido;
-    }
-    public String getTelefono() {
-        return telefono;
-    }
-    public String getCorreo() {
-        return correo;
-    }
-
+    @OneToMany
+    private ArrayList<Personal> personal;
 }

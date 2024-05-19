@@ -1,9 +1,10 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
+import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
+import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalArtisticoBoda;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalCocinaBoda;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalLogisticaBoda;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,17 +28,66 @@ public class Boda extends Evento {
 
 
     @Override
-    public void identificarLogistica() {
-
+    public void prepararLogistica(int capacidadMaxima) {
+        if (capacidadMaxima<200){
+            this.getPersonal()
+                    .addAll(personalLogisticaBoda
+                            .obtenerPersonalPequeno(this.getAdministrador()
+                                    .getPersonal()
+                            )
+                    );
+        } else if (capacidadMaxima<1000 && capacidadMaxima>200) {
+            this.getPersonal()
+                    .addAll(personalLogisticaBoda
+                            .obtenerPersonalMediano(this.getAdministrador()
+                                    .getPersonal()
+                            )
+                    );
+        }else {
+            this.getPersonal().addAll(personalLogisticaBoda
+                    .obtenerPersonalGrande(this.getAdministrador()
+                            .getPersonal()));
+        }
     }
 
     @Override
-    public void identificarCocina() {
-
+    public void prepararCocina(TipoComida tipoComida) {
+        if(tipoComida.equals(TipoComida.BASICO)){
+            this.getPersonal()
+                    .addAll(personalCocinaBoda
+                            .obtenerPersonalBasico(this.getAdministrador()
+                                    .getPersonal()
+                            )
+                    );
+        }else if(tipoComida.equals(TipoComida.FUERTE)){
+            this.getPersonal().addAll(personalCocinaBoda
+                    .obtenerPersonalFuerte(this.getAdministrador()
+                            .getPersonal()
+                    )
+            );
+        }
     }
 
     @Override
-    public void identificarPersonal() {
-
+    public void prepararArtistas(TipoMusica tipoMusica) {
+        if (tipoMusica.equals(TipoMusica.OCHENTAS)){
+            this.getPersonal().addAll(personalArtisticoBoda
+                    .obtenerPersonalOchentas(this.getAdministrador()
+                            .getPersonal()
+                    )
+            );
+        }else if(tipoMusica.equals(TipoMusica.URBANA)){
+            this.getPersonal().addAll(personalArtisticoBoda
+                    .obtenerPersonalUrbana(this.getAdministrador()
+                            .getPersonal()
+                    )
+            );
+        }else {
+            this.getPersonal().addAll(personalArtisticoBoda
+                    .obtenerPersonalClasica(this.getAdministrador()
+                            .getPersonal()
+                    )
+            );
+        }
     }
 }
