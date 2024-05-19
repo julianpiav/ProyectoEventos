@@ -10,15 +10,33 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @AllArgsConstructor
 
 
 
 
 public class QuinceAnos extends Evento{
-    private String cumpleañera;
+    public String getCumpleañera() {
+                return cumpleañera;
+        }
+
+        public void setCumpleañera(String cumpleañera) {
+                this.cumpleañera = cumpleañera;
+        }
+
+        public PersonalArtisticoQuinceAnos getPersonalArtisticoQuinceAnos() {
+                return personalArtisticoQuinceAnos;
+        }
+
+        public PersonalCocinaQuinceAnos getPersonalCocinaQuinceAnos() {
+                return personalCocinaQuinceAnos;
+        }
+
+        public PersonalLogisticaQuinceAnos getPersonalLogisticaQuinceAnos() {
+                return personalLogisticaQuinceAnos;
+        }
+
+private String cumpleañera;
     private final PersonalArtisticoQuinceAnos personalArtisticoQuinceAnos= new PersonalArtisticoQuinceAnos();
     private final PersonalCocinaQuinceAnos personalCocinaQuinceAnos= new PersonalCocinaQuinceAnos();
     private final PersonalLogisticaQuinceAnos personalLogisticaQuinceAnos= new PersonalLogisticaQuinceAnos();

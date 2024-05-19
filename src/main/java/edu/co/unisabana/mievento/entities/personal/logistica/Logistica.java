@@ -9,11 +9,16 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class Logistica extends Personal {
+    public ArrayList<String> getImplementos() {
+        return implementos;
+    }
+
+    public void setImplementos(ArrayList<String> implementos) {
+        this.implementos = implementos;
+    }
+
     private ArrayList<String> implementos;
 }
