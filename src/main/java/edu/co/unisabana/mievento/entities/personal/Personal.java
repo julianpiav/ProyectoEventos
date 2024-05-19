@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+@Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,21 +22,4 @@ public class Personal {
     private String apellido;
     private String contacto;
     private boolean disponible;
-    public Integer getidPersonal() {
-        return idPersonal;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public String getApellido() {
-        return apellido;
-    }
-    public String getContacto() {
-        return contacto;
-    }
-    public boolean isDisponible() {
-        return disponible;
-    }
-    
-
 }

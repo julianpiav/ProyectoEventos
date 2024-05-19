@@ -1,6 +1,9 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
+import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
+import edu.co.unisabana.mievento.entities.usuario.Administrador;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,14 +26,15 @@ public abstract class Evento {
     private String horaInicio;
     private String horaFin;
     private int capacidadMaxima;
-    private String tipoMusica;
-    private boolean dj;
-    private boolean orquesta;
+    private TipoMusica tipoMusica;
+    private TipoComida tipoComida;
+    @ManyToOne
+    private Administrador administrador;
     @OneToMany
     private ArrayList<Personal> personal;
 
-    public abstract void prepararLogistica();
-    public abstract void prepararCocina();
-    public abstract void prepararPersonal();
+    public abstract void prepararLogistica(int capacidadMaxima);
+    public abstract void prepararCocina(TipoComida tipoComida);
+    public abstract void prepararArtistas(TipoMusica tipoMusica);
 
 }
