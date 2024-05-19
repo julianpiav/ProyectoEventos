@@ -21,16 +21,26 @@ CREATE TABLE IF NOT EXISTS PERSONAL (
     experienciaAños INTEGER -- Nuevo campo para Artista
 );
 
-CREATE TABLE IF NOT EXISTS RESERVA (
-    idReserva INTEGER PRIMARY KEY AUTOINCREMENT,
-    lugar TEXT NOT NULL,
-    evento TEXT NOT NULL,
+CREATE TABLE RESERVA (
+    idReserva INTEGER PRIMARY KEY,
+    lugar TEXT,
     musica TEXT,
     comida TEXT,
-    seguridad TEXT,
-    direccion TEXT NOT NULL,
-    fecha TEXT NOT NULL
-    );
+    direccion TEXT,
+    fecha TEXT,
+    metodoPago TEXT,
+    eventoId INTEGER,
+    FOREIGN KEY(eventoId) REFERENCES EVENTO(idEvento)
+);
+
+INSERT INTO RESERVA (idReserva, lugar, musica, comida, direccion, fecha, metodoPago, eventoId)
+VALUES (1, 'Parque Central', 'URBANA', 'FUERTE', 'Calle 10 #20-30', '2024-06-30', 'Tarjeta de crédito', 101);
+
+INSERT INTO RESERVA (idReserva, lugar, musica, comida, direccion, fecha, metodoPago, eventoId)
+VALUES (2, 'Estadio Municipal', 'CLASICA', 'BASICO', 'Avenida 15 #30-40', '2024-07-15', 'Efectivo', 102);
+
+
+    
 
 -- Insertar un registro de tipo 'Logistica'
 INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, implementos)
@@ -44,3 +54,22 @@ VALUES ('Maria', 'Gomez', 'maria.gomez@example.com', 1, 'Musico', 'Guitarra', 'R
 INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, idArtista, generoArtistico, estilo, experienciaAños)
 VALUES ('Carlos', 'Rodriguez', 'carlos.rodriguez@example.com', 1, 'Artista', 123, 'Danza', 'Contemporánea', 5);
 
+CREATE TABLE EVENTO (
+    idEvento INTEGER PRIMARY KEY,
+    nombre TEXT,
+    descripcion TEXT,
+    fecha TEXT,
+    horaInicio TEXT,
+    horaFin TEXT,
+    capacidadMaxima INTEGER,
+    tipoMusica TEXT,
+    tipoComida TEXT,
+    administradorId INTEGER,
+    FOREIGN KEY(administradorId) REFERENCES ADMINISTRADOR(documento)
+);
+
+INSERT INTO EVENTO (idEvento, nombre, descripcion, fecha, horaInicio, horaFin, capacidadMaxima, tipoMusica, tipoComida, administradorId)
+VALUES (101, 'Festival de Música', 'Un festival de música al aire libre.', '2024-06-30', '10:00', '22:00', 5000, 'URBANA', 'FUERTE', 123456789);
+
+INSERT INTO EVENTO (idEvento, nombre, descripcion, fecha, horaInicio, horaFin, capacidadMaxima, tipoMusica, tipoComida, administradorId)
+VALUES (102, 'Concierto Clásico', 'Un concierto de música clásica en el auditorio.', '2024-07-15', '19:00', '21:00', 1000, 'CLASICA', 'BASICO', 987654321);
