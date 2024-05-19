@@ -9,9 +9,16 @@ CREATE TABLE IF NOT EXISTS PERSONAL (
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     apellido TEXT NOT NULL,
-    cargo TEXT NOT NULL,
-    contacto TEXT,
-    disponible INTEGER
+    contacto TEXT NOT NULL,
+    disponible INTEGER,
+    tipo TEXT NOT NULL, -- Nuevo campo para determinar el tipo de personal (Logistica, Musico, Artista)
+    implementos TEXT, -- Nuevo campo para Logistica
+    instrumentoPrincipal TEXT, -- Nuevo campo para Musico
+    generoMusical TEXT, -- Nuevo campo para Musico
+    idArtista INTEGER, -- Nuevo campo para Artista
+    generoArtistico TEXT, -- Nuevo campo para Artista
+    estilo TEXT, -- Nuevo campo para Artista
+    experienciaAños INTEGER -- Nuevo campo para Artista
 );
 
 
@@ -26,11 +33,15 @@ CREATE TABLE IF NOT EXISTS RESERVA (
     fecha TEXT NOT NULL
     );
 
+-- Insertar un registro de tipo 'Logistica'
+INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, implementos)
+VALUES ('Juan', 'Perez', 'juan.perez@example.com', 1, 'Logistica', 'Carro, Laptop');
 
-INSERT INTO PERSONAL (nombre, apellido, contacto, disponible)
-VALUES ('Juan', 'Perez', 'juan.perez@example.com', 1);
+-- Insertar un registro de tipo 'Musico'
+INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, instrumentoPrincipal, generoMusical)
+VALUES ('Maria', 'Gomez', 'maria.gomez@example.com', 1, 'Musico', 'Guitarra', 'Rock');
 
-INSERT INTO CLIENTES (documento, nombre, apellido, telefono, direccion, correo, metodopago) VALUES (123456789, 'John', 'Doe', '1234567890', '123 Main St', 'john.doe@example.com', 'Credit Card'), (987654321, 'Jane', 'Smith', '9876543210', '456 Elm St', 'jane.smith@example.com', 'PayPal'), (456789123, 'Alice', 'Johnson', '4567891230', '789 Oak St', 'alice.johnson@example.com', 'Cash');
+-- Insertar un registro de tipo 'Artista'
+INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, idArtista, generoArtistico, estilo, experienciaAños)
+VALUES ('Carlos', 'Rodriguez', 'carlos.rodriguez@example.com', 1, 'Artista', 123, 'Danza', 'Contemporánea', 5);
 
-
-PRAGMA table_info(PERSONAL);
