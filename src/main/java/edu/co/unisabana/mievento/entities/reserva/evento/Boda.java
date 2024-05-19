@@ -6,73 +6,16 @@ import edu.co.unisabana.mievento.factory.personalBoda.PersonalArtisticoBoda;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalCocinaBoda;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalLogisticaBoda;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
-
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Boda extends Evento {
-    public String getPareja1() {
-                return pareja1;
-        }
-
-        public void setPareja1(String pareja1) {
-                this.pareja1 = pareja1;
-        }
-
-        public String getPareja2() {
-                return pareja2;
-        }
-
-        public void setPareja2(String pareja2) {
-                this.pareja2 = pareja2;
-        }
-
-        public String getPadrino() {
-                return padrino;
-        }
-
-        public void setPadrino(String padrino) {
-                this.padrino = padrino;
-        }
-
-        public String getMadrina() {
-                return madrina;
-        }
-
-        public void setMadrina(String madrina) {
-                this.madrina = madrina;
-        }
-
-        public String getTema() {
-                return tema;
-        }
-
-        public void setTema(String tema) {
-                this.tema = tema;
-        }
-
-        public boolean isCateringIncluido() {
-                return cateringIncluido;
-        }
-
-        public void setCateringIncluido(boolean cateringIncluido) {
-                this.cateringIncluido = cateringIncluido;
-        }
-
-        public PersonalArtisticoBoda getPersonalArtisticoBoda() {
-                return personalArtisticoBoda;
-        }
-
-        public PersonalLogisticaBoda getPersonalLogisticaBoda() {
-                return personalLogisticaBoda;
-        }
-
-        public PersonalCocinaBoda getPersonalCocinaBoda() {
-                return personalCocinaBoda;
-        }
-
 private String pareja1;
     private String pareja2;
     private String padrino;

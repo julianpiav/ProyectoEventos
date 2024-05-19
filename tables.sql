@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS CLIENTES (
+/*CREATE TABLE IF NOT EXISTS CLIENTES (
   documento INT NOT NULL PRIMARY KEY,
   nombre VARCHAR(50) NOT NULL,
   apellido VARCHAR(50) NOT NULL,
@@ -33,6 +33,8 @@ CREATE TABLE RESERVA (
     FOREIGN KEY(eventoId) REFERENCES EVENTO(idEvento)
 );
 
+ */
+
 INSERT INTO RESERVA (idReserva, lugar, musica, comida, direccion, fecha, metodoPago, eventoId)
 VALUES (1, 'Parque Central', 'URBANA', 'FUERTE', 'Calle 10 #20-30', '2024-06-30', 'Tarjeta de crédito', 101);
 
@@ -42,9 +44,9 @@ VALUES (2, 'Estadio Municipal', 'CLASICA', 'BASICO', 'Avenida 15 #30-40', '2024-
 
     
 
--- Insertar un registro de tipo 'Logistica'
+-- Insertar un registro de tipo 'Todero'
 INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, implementos)
-VALUES ('Juan', 'Perez', 'juan.perez@example.com', 1, 'Logistica', 'Carro, Laptop');
+VALUES ('Juan', 'Perez', 'juan.perez@example.com', 1, 'Todero', 'Carro, Laptop');
 
 -- Insertar un registro de tipo 'Musico'
 INSERT INTO PERSONAL (nombre, apellido, contacto, disponible, tipo, instrumentoPrincipal, generoMusical)
