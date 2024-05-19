@@ -4,8 +4,7 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.repository.IClientRepository;
 import edu.co.unisabana.mievento.repository.IPersonalRepository;
-import edu.co.unisabana.mievento.servicio.ServicioCliente;
-import edu.co.unisabana.mievento.servicio.ServicioPersonal;
+
 
 import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class ControladorAdministrador {
         return new ResponseEntity<>(personalList, HttpStatus.OK);
     }
 
-    //Ya funciona
+    //Ya funciona pero falta en el front
     @GetMapping(path = "/personal/{id}")
     public ResponseEntity<Personal> obtenerPersonalPorId(@PathVariable("id") int id) {
         Optional<Personal> optionalPersonal = servicioPersonal.findById(id);
@@ -54,17 +53,32 @@ public class ControladorAdministrador {
         }
     }
 
-    
+
     @PostMapping(path = "/personal/guardar")
     public ResponseEntity<String> guardarPersonal(@RequestBody Personal personal) {
         //servicioPersonal.guardarOEditarPersonal(personal);
         return new ResponseEntity<>("Personal guardado con Exito", HttpStatus.CREATED);
     }
-    @PutMapping(path = "/personal/modificar")
-    public ResponseEntity<String> modificarPersonal(@RequestBody Personal personal) {
-        //servicioPersonal.guardarOEditarPersonal(personal);
-        return new ResponseEntity<>("Personal modificado con éxito", HttpStatus.OK);
+
+    //Funciona
+    @PutMapping(path = "/personal/modificar/{id}")
+    public ResponseEntity<Personal> modificarPersonal(@PathVariable("id") int id, @RequestBody Personal personal) {
+        Optional<Personal> optionalPersonal = servicioPersonal.findById(id);
+        if (optionalPersonal.isPresent()) {
+            Personal personalExistente = optionalPersonal.get();
+            personalExistente.setApellido(personal.getApellido());
+            personalExistente.setContacto(personal.getContacto());
+            personalExistente.setDisponible(personal.isDisponible());
+            personalExistente.setIdPersonal(personal.getidPersonal());
+            personalExistente.setNombre(personal.getNombre());
+            servicioPersonal.save(personalExistente);
+            
+            return new ResponseEntity<>(personalExistente, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
+    
 
 
     @DeleteMapping("/personal/eliminar/{id}")
