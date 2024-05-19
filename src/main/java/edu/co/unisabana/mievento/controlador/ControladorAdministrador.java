@@ -2,6 +2,7 @@ package edu.co.unisabana.mievento.controlador;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
+import edu.co.unisabana.mievento.repository.IClientRepository;
 import edu.co.unisabana.mievento.servicio.ServicioCliente;
 import edu.co.unisabana.mievento.servicio.ServicioPersonal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,23 +11,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.ArrayList; // Add this import statement
 
 @RestController
 @RequestMapping(path = "api/v1/administrador")
 public class ControladorAdministrador {
     @Autowired
-    private ServicioCliente servicioCliente;
+    private IClientRepository servicioCliente;
     @Autowired
     private ServicioPersonal servicioPersonal;
-
-    @GetMapping(path = "/clientes/todos")
+    
+    @GetMapping(path = "/getUsers")
     public ResponseEntity<List<Cliente>> obtenerClientes() {
-        return new ResponseEntity<>(servicioCliente.obtenerClientes(), HttpStatus.OK);
+        List<Cliente> clienteList = new ArrayList<>(); // Fix the issue by importing ArrayList
+        Iterable<Cliente> iterableClientes = servicioCliente.findAll();
+        iterableClientes.forEach(clienteList::add);
+        return new ResponseEntity<>(clienteList, HttpStatus.OK);
     }
+
 
     @GetMapping(path = "/personal/todos")
     public ResponseEntity<List<Personal>> obtenerPersonal() {
-        return new ResponseEntity<>(servicioPersonal.obtenerPersonal(), HttpStatus.OK);
+        List<Personal> personalList = servicioPersonal.obtenerPersonal();
+        return new ResponseEntity<>(personalList, HttpStatus.OK);
     }
     @GetMapping(path = "/personal/{id}")
     public ResponseEntity<Personal> obtenerPersonalPorId(@PathVariable("id") Long id) {
