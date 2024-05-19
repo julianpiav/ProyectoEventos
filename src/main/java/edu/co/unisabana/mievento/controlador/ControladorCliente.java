@@ -25,6 +25,14 @@ public class ControladorCliente {
 
     @Autowired
     private IPersonalRepository PersonalRepository;
+    
+    @PostMapping(path = "/reserva/guardar")
+    public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
+        //servicioReserva.guardarOEditarReserva(reserva);
+        Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
+        reserva.setEvento(eventoListo);
+        return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);
+    }
 
     /*
     // Endpoints para reservas
@@ -40,13 +48,7 @@ public class ControladorCliente {
         return new ResponseEntity<>(reserva, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/reserva/guardar")
-    public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
-        //servicioReserva.guardarOEditarReserva(reserva);
-        Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
-        reserva.setEvento(eventoListo);
-        return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);
-    }
+    
 
     @PutMapping(path = "/reserva/modificar")
     public ResponseEntity<String> modificarReserva(@RequestBody Reserva reserva) {
