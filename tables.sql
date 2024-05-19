@@ -6,12 +6,12 @@ CREATE TABLE IF NOT EXISTS CLIENTES (
   correo VARCHAR(150) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS PERSONAL (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    idPersonal INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT NOT NULL,
     apellido TEXT NOT NULL,
     contacto TEXT NOT NULL,
     disponible INTEGER,
-    tipo TEXT NOT NULL, -- Nuevo campo para determinar el tipo de personal (Logistica, Musico, Artista)
+    cargo TEXT NOT NULL, -- Nuevo campo para determinar el tipo de personal (Logistica, Musico, Artista)
     implementos TEXT, -- Nuevo campo para Logistica
     instrumentoPrincipal TEXT, -- Nuevo campo para Musico
     generoMusical TEXT, -- Nuevo campo para Musico
@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS PERSONAL (
     estilo TEXT, -- Nuevo campo para Artista
     experienciaAños INTEGER -- Nuevo campo para Artista
 );
-
 
 CREATE TABLE IF NOT EXISTS RESERVA (
     idReserva INTEGER PRIMARY KEY AUTOINCREMENT,
