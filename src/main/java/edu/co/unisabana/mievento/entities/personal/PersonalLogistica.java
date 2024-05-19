@@ -6,7 +6,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public interface PersonalLogistica {
-    public void agregarPersonalPequeno(ArrayList<Logistica> logisticaPequena);
-    public void agregarPersonalMediano(ArrayList<Logistica> logisticaMediana) ;
-    public void agregarPersonalGrande(ArrayList<Logistica> logisticaGrande);
+    public void agregarPersonalPequeno();
+    public void agregarPersonalMediano() ;
+    public void agregarPersonalGrande();
 }

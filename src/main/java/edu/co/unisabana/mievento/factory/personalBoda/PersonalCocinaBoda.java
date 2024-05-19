@@ -6,13 +6,14 @@ import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
 import java.util.ArrayList;
 
 public class PersonalCocinaBoda implements PersonalCocina {
+
     @Override
-    public void agregarPersonalBasico(ArrayList<Chef> chefs) {
+    public void agregarPersonalBasico() {
 
     }
 
     @Override
-    public void agregarPersonalFuerte(ArrayList<Chef> chefs) {
+    public void agregarPersonalFuerte() {
 
     }
 }

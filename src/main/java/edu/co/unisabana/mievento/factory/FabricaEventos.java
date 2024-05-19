@@ -16,15 +16,6 @@ public class FabricaEventos {
 
         }
     }
-    public void identificarLogistica(Evento evento){
-
-    }
-    public void identificarCocina(Evento evento){
-
-    }
-    public void identificarArtististas(Evento evento){
-
-    }
 
 
 }

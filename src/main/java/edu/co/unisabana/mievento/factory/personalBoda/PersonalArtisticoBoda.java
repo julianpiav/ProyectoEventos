@@ -6,18 +6,19 @@ import edu.co.unisabana.mievento.entities.personal.artista.Artista;
 import java.util.ArrayList;
 
 public class PersonalArtisticoBoda implements PersonalArtistico {
+
     @Override
-    public void agregarPersonalClasica(ArrayList<Artista> artistas) {
+    public void agregarPersonalClasica() {
 
     }
 
     @Override
-    public void agregarPersonalUrbana(ArrayList<Artista> artistas) {
+    public void agregarPersonalUrbana() {
 
     }
 
     @Override
-    public void agregarPersonalOchentas(ArrayList<Artista> artistas) {
+    public void agregarPersonalOchentas() {
 
     }
 }

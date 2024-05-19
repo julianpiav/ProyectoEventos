@@ -29,8 +29,8 @@ public abstract class Evento {
     @OneToMany
     private ArrayList<Personal> personal;
 
-    public abstract void identificarLogistica();
-    public abstract void identificarCocina();
-    public abstract void identificarPersonal();
+    public abstract void prepararLogistica();
+    public abstract void prepararCocina();
+    public abstract void prepararPersonal();
 
 }
