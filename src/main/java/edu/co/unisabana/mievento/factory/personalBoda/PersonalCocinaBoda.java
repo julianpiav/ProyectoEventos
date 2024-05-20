@@ -6,17 +6,18 @@ import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class PersonalCocinaBoda implements PersonalCocina {
 
     @Override
-    public ArrayList<Personal> obtenerPersonalBasico(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalBasico(List<Personal> personal) {
         Optional<Personal> chefPastel= personal.stream().filter(person -> person instanceof Chef
                 && person.isDisponible() && ((Chef) person).isPastelBoda()).findFirst();
-        ArrayList<Personal> personalRequerido= personal.stream()
+        List<Personal> personalRequerido= personal.stream()
                 .filter(p -> p instanceof Chef &&
                         ((Chef) p).getTipoComida() == TipoComida.BASICO &&
                         p.isDisponible())
@@ -27,10 +28,10 @@ public class PersonalCocinaBoda implements PersonalCocina {
     }
 
     @Override
-    public ArrayList<Personal> obtenerPersonalFuerte(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalFuerte(List<Personal> personal) {
         Optional<Personal> chefPastel= personal.stream().filter(person -> person instanceof Chef
                 && person.isDisponible() && ((Chef) person).isPastelBoda()).findFirst();
-        ArrayList<Personal> personalRequerido= personal.stream()
+        List<Personal> personalRequerido= personal.stream()
                 .filter(p -> p instanceof Chef &&
                         ((Chef) p).getTipoComida() == TipoComida.BASICO &&
                         p.isDisponible())

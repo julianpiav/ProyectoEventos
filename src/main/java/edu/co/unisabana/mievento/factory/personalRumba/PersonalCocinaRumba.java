@@ -7,15 +7,16 @@ import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class PersonalCocinaRumba implements PersonalCocina {
 
 
     @Override
-    public ArrayList<Personal> obtenerPersonalBasico(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalBasico(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Chef && ((Chef) p).getTipoComida()==TipoComida.BASICO && p.isDisponible())
                 .limit(1)
@@ -23,7 +24,7 @@ public class PersonalCocinaRumba implements PersonalCocina {
     }
 
     @Override
-    public ArrayList<Personal> obtenerPersonalFuerte(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalFuerte(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Chef && ((Chef) p).getTipoComida()==TipoComida.FUERTE && p.isDisponible())
                 .limit(2)

@@ -10,7 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.List;
 
 @Getter
 @Setter
@@ -25,5 +26,5 @@ public class Administrador {
     private String telefono;
     private String correo;
     @OneToMany
-    private ArrayList<Personal> personal;
+    private List<Personal> personal;
 }

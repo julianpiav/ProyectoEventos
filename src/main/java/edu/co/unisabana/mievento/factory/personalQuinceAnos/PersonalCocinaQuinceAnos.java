@@ -5,14 +5,15 @@ import edu.co.unisabana.mievento.entities.personal.PersonalCocina;
 import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class PersonalCocinaQuinceAnos implements PersonalCocina {
 
 
     @Override
-    public ArrayList<Personal> obtenerPersonalBasico(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalBasico(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Chef && ((Chef) p).getTipoComida()== TipoComida.BASICO && p.isDisponible())
                 .limit(2)
@@ -21,7 +22,7 @@ public class PersonalCocinaQuinceAnos implements PersonalCocina {
     }
 
     @Override
-    public ArrayList<Personal> obtenerPersonalFuerte(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalFuerte(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Chef && ((Chef) p).getTipoComida()==TipoComida.FUERTE && p.isDisponible())
                 .limit(2)
