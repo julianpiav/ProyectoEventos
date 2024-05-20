@@ -44,7 +44,7 @@ public abstract class Evento {
     private TipoComida tipoComida;
     @ManyToOne
     private Administrador administrador;
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "evento_personal",
             joinColumns = @JoinColumn(name = "evento_id"),

@@ -1,7 +1,12 @@
 package edu.co.unisabana.mievento;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.personal.artista.Artista;
+import edu.co.unisabana.mievento.entities.personal.artista.Musico;
+import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
+import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
+import edu.co.unisabana.mievento.entities.personal.logistica.Todero;
 import edu.co.unisabana.mievento.entities.usuario.Administrador;
 import edu.co.unisabana.mievento.repository.IAdministradorRepository;
 import edu.co.unisabana.mievento.repository.IClientRepository;
@@ -45,36 +50,6 @@ public class MiEventoApplication {
                 log.info(personal.getApellido());
             });
 
-			// Crea una nueva instancia de Personal
-			Personal personal1 = new Chef();
-			personal1.setNombre("Juan");
-			personal1.setApellido("Pérez");
-			personal1.setContacto("juan.perez@example.com");
-			personal1.setDisponible(true);
-			personal1.setCargo("Cocinero");
-
-			// Guarda el personal en la base de datos
-			personalRepository.save(personal1);
-
-			// Crea más personal
-			Personal personal2 = new Personal();
-			personal2.setNombre("María");
-			personal2.setApellido("Rodríguez");
-			personal2.setContacto("maria.rodriguez@example.com");
-			personal2.setDisponible(true);
-			personal2.setCargo("Mesera");
-
-			Personal personal3 = new Personal();
-			personal3.setNombre("Carlos");
-			personal3.setApellido("Gómez");
-			personal3.setContacto("carlos.gomez@example.com");
-			personal3.setDisponible(true);
-			personal3.setCargo("Bartender");
-
-			// Guarda el personal en la base de datos
-			personalRepository.save(personal2);
-			personalRepository.save(personal3);
-
 			// Crea una nueva instancia de Administrador
 			Administrador administrador = new Administrador();
 			administrador.setDocumento(123456789);
@@ -82,6 +57,51 @@ public class MiEventoApplication {
 			administrador.setApellido("Gómez");
 			administrador.setTelefono("3001234567");
 			administrador.setCorreo("ana.gomez@example.com");
+			// Guarda el administrador en la base de datos
+			administradorRepository.save(administrador);
+
+			// Crea una nueva instancia de Personal
+			Chef personal1 = new Chef();
+			personal1.setNombre("Juan");
+			personal1.setApellido("Pérez");
+			personal1.setContacto("juan.perez@example.com");
+			personal1.setDisponible(true);
+			personal1.setTipoComida(TipoComida.FUERTE);
+			personal1.setPastelBoda(true);
+			personal1.setCargo("Cocinero");
+			personal1.setAdministrador(administrador);
+
+			// Guarda el personal en la base de datos
+			personalRepository.save(personal1);
+
+			// Crea más personal
+			Musico personal2 = new Musico();
+			personal2.setNombre("María");
+			personal2.setApellido("Rodríguez");
+			personal2.setContacto("maria.rodriguez@example.com");
+			personal2.setDisponible(true);
+			personal2.setGeneroMusical(TipoMusica.CLASICA);
+			personal2.setInstrumentoPrincipal("Piano");
+			personal2.setCargo("Musico");
+			personalRepository.save(personal2);
+			personal2.setAdministrador(administrador);
+
+
+			Todero personal3 = new Todero();
+			personal3.setNombre("Carlos");
+			personal3.setApellido("Gómez");
+			personal3.setContacto("carlos.gomez@example.com");
+			personal3.setDisponible(true);
+			personal3.setCargo("Todero");
+			personal3.setAdministrador(administrador);
+
+
+
+			// Guarda el personal en la base de datos
+
+			personalRepository.save(personal3);
+
+
 
 			// Añade el personal al administrador
 			List<Personal> personalList = new ArrayList<>();
@@ -89,9 +109,10 @@ public class MiEventoApplication {
 			personalList.add(personal2);
 			personalList.add(personal3);
 			administrador.setPersonal(personalList);
-
 			// Guarda el administrador en la base de datos
 			administradorRepository.save(administrador);
+
+
 
 
 
