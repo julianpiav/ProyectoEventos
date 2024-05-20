@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,7 +18,6 @@ public abstract class Lugar {
     private String nombre;
     private String direccion;
     private int capacidad;
-    private Lugar tipo;
     private boolean disponibilidad;
     private String descripcion;
 }

@@ -18,13 +18,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Cliente {
-    @Id
-    private int documento;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String correo;
+public class Cliente extends Usuario{
+    private String metodopago;
     @OneToMany(mappedBy = "cliente")
     private List<Reserva> reservas= new ArrayList<>();
 

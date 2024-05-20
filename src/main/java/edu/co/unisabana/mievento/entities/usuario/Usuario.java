@@ -1,17 +1,17 @@
 package edu.co.unisabana.mievento.entities.usuario;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+@MappedSuperclass
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Usuario {
     @Id
     protected int documento;
@@ -21,5 +21,4 @@ public abstract class Usuario {
     protected String telefono;
     protected String direccion;
     protected String correo;
-    protected String metodopago;
 }

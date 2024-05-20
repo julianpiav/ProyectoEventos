@@ -18,13 +18,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Administrador {
-    @Id
-    private int documento;
-    private String nombre;
-    private String apellido;
-    private String telefono;
-    private String correo;
+public class Administrador extends Usuario{
     @OneToMany(mappedBy = "administrador")
     private List<Personal> personal = new ArrayList<>();
     @OneToMany(mappedBy = "administrador")
