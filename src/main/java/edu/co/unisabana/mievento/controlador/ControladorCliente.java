@@ -44,6 +44,7 @@ public class ControladorCliente {
     public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
         Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
         reserva.setEvento(eventoListo);
+
         reservasRepository.save(reserva);
         return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);
     }
