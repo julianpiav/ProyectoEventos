@@ -7,6 +7,7 @@ import edu.co.unisabana.mievento.entities.reserva.Reserva;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,20 +26,7 @@ public class Cliente {
     private String apellido;
     private String telefono;
     private String correo;
-    public int getDocumento() {
-        return documento;
-    }
-    public String getNombre() {
-        return nombre;
-    }
-    public String getApellido() {
-        return apellido;
-    }
-    public String getTelefono() {
-        return telefono;
-    }
-    public String getCorreo() {
-        return correo;
-    }
+    @OneToMany
+    private ArrayList<Reserva> reservas;
 
 }

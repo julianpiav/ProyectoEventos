@@ -1,5 +1,7 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
@@ -18,6 +20,14 @@ import java.util.ArrayList;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Boda.class, name = "boda"),
+        @JsonSubTypes.Type(value = QuinceAnos.class, name = "quinceAnos"),
+        @JsonSubTypes.Type(value = Rumba.class, name = "rumba")
+})
 public abstract class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
