@@ -1,5 +1,6 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
+import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 import edu.co.unisabana.mievento.factory.personalRumba.PersonalArtisticoRumba;
@@ -8,6 +9,9 @@ import edu.co.unisabana.mievento.factory.personalRumba.PersonalLogisticaRumba;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -26,65 +30,59 @@ public class Rumba extends Evento{
 
     @Override
     public void prepararLogistica(int capacidadMaxima) {
+        List<Personal> personalLogistica;
         if (capacidadMaxima<200){
-            this.getPersonal()
-                    .addAll(personalLogisticaRumba
-                            .obtenerPersonalPequeno(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalLogistica = personalLogisticaRumba
+                    .obtenerPersonalPequeno(this.getAdministrador()
+                            .getPersonal());
         } else if (capacidadMaxima<1000 && capacidadMaxima>200) {
-            this.getPersonal()
-                    .addAll(personalLogisticaRumba
-                            .obtenerPersonalMediano(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalLogistica = personalLogisticaRumba
+                    .obtenerPersonalMediano(this.getAdministrador()
+                            .getPersonal());
         }else {
-            this.getPersonal().addAll(personalLogisticaRumba
-                    .obtenerPersonalGrande(this.getAdministrador()
-                            .getPersonal()));
+            personalLogistica = personalLogisticaRumba.obtenerPersonalGrande(this.getAdministrador().getPersonal());
         }
+        for (Personal personal : personalLogistica) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalLogistica);
     }
 
     @Override
     public void prepararCocina(TipoComida tipoComida) {
+        List<Personal> personalCocina;
         if(tipoComida.equals(TipoComida.BASICO)){
-            this.getPersonal()
-                    .addAll(personalCocinaRumba
-                            .obtenerPersonalBasico(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalCocina = personalCocinaRumba.obtenerPersonalBasico(this.getAdministrador().getPersonal());
         }else if(tipoComida.equals(TipoComida.FUERTE)){
-            this.getPersonal().addAll(personalCocinaRumba
-                    .obtenerPersonalFuerte(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalCocina = personalCocinaRumba.obtenerPersonalFuerte(this.getAdministrador().getPersonal());
+        }else {
+            personalCocina = new ArrayList<>();
         }
+        for (Personal personal : personalCocina) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalCocina);
     }
 
     @Override
     public void prepararArtistas(TipoMusica tipoMusica) {
+        List<Personal> personalArtistas;
         if (tipoMusica.equals(TipoMusica.OCHENTAS)){
-            this.getPersonal().addAll(personalArtisticoRumba
-                    .obtenerPersonalOchentas(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoRumba.obtenerPersonalOchentas(this.getAdministrador().getPersonal());
         }else if(tipoMusica.equals(TipoMusica.URBANA)){
-            this.getPersonal().addAll(personalArtisticoRumba
-                    .obtenerPersonalUrbana(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoRumba.obtenerPersonalUrbana(this.getAdministrador().getPersonal());
         }else {
-            this.getPersonal().addAll(personalArtisticoRumba
-                    .obtenerPersonalClasica(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoRumba.obtenerPersonalClasica(this.getAdministrador().getPersonal());
         }
+        for (Personal personal : personalArtistas) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalArtistas);
     }
 }

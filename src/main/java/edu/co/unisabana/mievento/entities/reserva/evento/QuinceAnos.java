@@ -1,6 +1,7 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
 
+import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 import edu.co.unisabana.mievento.factory.personalQuinceAnos.PersonalArtisticoQuinceAnos;
@@ -10,11 +11,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @Setter
 @Getter
 public class QuinceAnos extends Evento{
-private String cumpleañera;
+private String cumpleanera;
     private final PersonalArtisticoQuinceAnos personalArtisticoQuinceAnos= new PersonalArtisticoQuinceAnos();
     private final PersonalCocinaQuinceAnos personalCocinaQuinceAnos= new PersonalCocinaQuinceAnos();
     private final PersonalLogisticaQuinceAnos personalLogisticaQuinceAnos= new PersonalLogisticaQuinceAnos();
@@ -22,65 +26,59 @@ private String cumpleañera;
 
     @Override
     public void prepararLogistica(int capacidadMaxima) {
+        List<Personal> personalLogistica;
         if (capacidadMaxima<200){
-            this.getPersonal()
-                    .addAll(personalLogisticaQuinceAnos
-                            .obtenerPersonalPequeno(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalLogistica = personalLogisticaQuinceAnos
+                    .obtenerPersonalPequeno(this.getAdministrador()
+                            .getPersonal());
         } else if (capacidadMaxima<1000 && capacidadMaxima>200) {
-            this.getPersonal()
-                    .addAll(personalLogisticaQuinceAnos
-                            .obtenerPersonalMediano(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalLogistica = personalLogisticaQuinceAnos
+                    .obtenerPersonalMediano(this.getAdministrador()
+                            .getPersonal());
         }else {
-            this.getPersonal().addAll(personalLogisticaQuinceAnos
-                    .obtenerPersonalGrande(this.getAdministrador()
-                            .getPersonal()));
+            personalLogistica = personalLogisticaQuinceAnos.obtenerPersonalGrande(this.getAdministrador().getPersonal());
         }
+        for (Personal personal : personalLogistica) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalLogistica);
     }
 
     @Override
     public void prepararCocina(TipoComida tipoComida) {
+        List<Personal> personalCocina;
         if(tipoComida.equals(TipoComida.BASICO)){
-            this.getPersonal()
-                    .addAll(personalCocinaQuinceAnos
-                            .obtenerPersonalBasico(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
+            personalCocina = personalCocinaQuinceAnos.obtenerPersonalBasico(this.getAdministrador().getPersonal());
         }else if(tipoComida.equals(TipoComida.FUERTE)){
-            this.getPersonal().addAll(personalCocinaQuinceAnos
-                    .obtenerPersonalFuerte(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalCocina = personalCocinaQuinceAnos.obtenerPersonalFuerte(this.getAdministrador().getPersonal());
+        }else {
+            personalCocina = new ArrayList<>();
         }
+        for (Personal personal : personalCocina) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalCocina);
     }
 
     @Override
     public void prepararArtistas(TipoMusica tipoMusica) {
+        List<Personal> personalArtistas;
         if (tipoMusica.equals(TipoMusica.OCHENTAS)){
-            this.getPersonal().addAll(personalArtisticoQuinceAnos
-                    .obtenerPersonalOchentas(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoQuinceAnos.obtenerPersonalOchentas(this.getAdministrador().getPersonal());
         }else if(tipoMusica.equals(TipoMusica.URBANA)){
-            this.getPersonal().addAll(personalArtisticoQuinceAnos
-                    .obtenerPersonalUrbana(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoQuinceAnos.obtenerPersonalUrbana(this.getAdministrador().getPersonal());
         }else {
-            this.getPersonal().addAll(personalArtisticoQuinceAnos
-                    .obtenerPersonalClasica(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+            personalArtistas = personalArtisticoQuinceAnos.obtenerPersonalClasica(this.getAdministrador().getPersonal());
         }
+        for (Personal personal : personalArtistas) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalArtistas);
     }
 }

@@ -46,7 +46,7 @@ public abstract class Evento {
     private Administrador administrador;
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
-            name = "evento_personal",
+            name = "Evento_Personal",
             joinColumns = @JoinColumn(name = "evento_id"),
             inverseJoinColumns = @JoinColumn(name = "personal_id"))
     private List<Personal> personal= new ArrayList<>();

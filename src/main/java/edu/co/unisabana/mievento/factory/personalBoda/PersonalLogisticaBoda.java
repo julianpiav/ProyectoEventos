@@ -25,7 +25,7 @@ public class PersonalLogisticaBoda implements PersonalLogistica {
     public List<Personal> obtenerPersonalMediano(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Todero &&  p.isDisponible())
-                .limit(8)
+                .limit(6)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
@@ -33,7 +33,7 @@ public class PersonalLogisticaBoda implements PersonalLogistica {
     public List<Personal> obtenerPersonalGrande(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Todero &&  p.isDisponible())
-                .limit(12)
+                .limit(8)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 }
