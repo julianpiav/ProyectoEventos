@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Artista extends Musico {
+public abstract class Artista extends Personal {
     private String generoArtistico; // Podría ser "Música", "Danza", "Magia", etc.
     private String estilo; // Por ejemplo, si el género artístico es "Música", el estilo podría ser "Rock", "Pop", "Clásico", etc.
 }
