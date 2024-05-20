@@ -112,4 +112,15 @@ public class ControladorAdministrador {
         personalRepository.save(personal);
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
+
+    @DeleteMapping(path = "/personal/delete/{personalId}")
+    public ResponseEntity<Void> eliminarPersonal(@PathVariable("personalId") Integer personalId) {
+        try {
+            personalRepository.deleteById(personalId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            // Manejar el error si no se puede eliminar el registro
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
