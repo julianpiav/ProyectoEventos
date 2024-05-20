@@ -1,10 +1,11 @@
 package edu.co.unisabana.mievento.controlador;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
+import edu.co.unisabana.mievento.entities.reserva.Reserva;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.repository.IClientRepository;
 import edu.co.unisabana.mievento.repository.IPersonalRepository;
-
+import edu.co.unisabana.mievento.repository.IReservasRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,10 +23,20 @@ public class ControladorAdministrador {
     private IClientRepository clientRepository;
     @Autowired
     private IPersonalRepository personalRepository;
-
+    @Autowired
+    private IReservasRepository reservasRepository;
+    
+    @GetMapping(path = "/reservas/todos")
+    public ResponseEntity<List<Reserva>> obtenerReserva() {
+        Iterable<Reserva> reservaIterable = reservasRepository.findAll();
+        List<Reserva> reservas = new ArrayList<>();
+        reservaIterable.forEach(reservas::add);
+        return new ResponseEntity<>(reservas, HttpStatus.OK);
+    }
+    //Ya funciona
     @GetMapping(path = "/getUsers")
     public ResponseEntity<List<Cliente>> obtenerClientes() {
-        List<Cliente> clienteList = new ArrayList<>();
+        List<Cliente> clienteList = new ArrayList<>(); // Fix the issue by importing ArrayList
         Iterable<Cliente> iterableClientes = clientRepository.findAll();
         iterableClientes.forEach(clienteList::add);
         return new ResponseEntity<>(clienteList, HttpStatus.OK);
@@ -68,8 +79,8 @@ public class ControladorAdministrador {
 
 
     @DeleteMapping("/personal/eliminar/{id}")
-    public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") Long id) {
-        //servicioPersonal.eliminarPersonal(id);
+    public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") int id) {
+        personalRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -110,5 +121,16 @@ public class ControladorAdministrador {
     public ResponseEntity<Boolean> guardarPersonal(@RequestBody Personal personal) {
         personalRepository.save(personal);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/personal/delete/{personalId}")
+    public ResponseEntity<Void> eliminarPersonal(@PathVariable("personalId") Integer personalId) {
+        try {
+            personalRepository.deleteById(personalId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            // Manejar el error si no se puede eliminar el registro
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
