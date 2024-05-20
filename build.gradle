@@ -23,7 +23,6 @@ dependencies {
 
 		implementation 'org.springframework.boot:spring-boot-starter-web'
 
-		implementation 'com.google.firebase:firebase-admin:9.2.0'
 		// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
 		implementation group: 'org.xerial', name: 'sqlite-jdbc'
 		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

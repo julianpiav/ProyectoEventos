@@ -3,11 +3,10 @@ package edu.co.unisabana.mievento.controlador;
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.reserva.Reserva;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
+import edu.co.unisabana.mievento.entities.usuario.Administrador;
 import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import edu.co.unisabana.mievento.factory.FabricaEventos;
-import edu.co.unisabana.mievento.repository.IClientRepository;
-import edu.co.unisabana.mievento.repository.IPersonalRepository;
-import edu.co.unisabana.mievento.repository.IReservasRepository;
+import edu.co.unisabana.mievento.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +22,8 @@ public class ControladorCliente {
     private FabricaEventos fabricaEventos;
     @Autowired
     private IReservasRepository reservasRepository;
+    @Autowired
+    private IAdministradorRepository administradorRepository;
 
 
     // Endpoints para reservas
@@ -43,8 +44,10 @@ public class ControladorCliente {
     @PostMapping(path = "/reserva/guardar")
     public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
         Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
+        Administrador administrador= administradorRepository.findById(reserva.getEvento().getAdministrador().getDocumento()).orElse(null);
+        administrador.getEventos().add(eventoListo);
+        eventoListo.setAdministrador(administrador);
         reserva.setEvento(eventoListo);
-
         reservasRepository.save(reserva);
         return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);
     }

@@ -13,9 +13,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,9 +26,9 @@ import java.util.List;
         use = JsonTypeInfo.Id.NAME,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Boda.class, name = "boda"),
-        @JsonSubTypes.Type(value = QuinceAnos.class, name = "quinceAnos"),
-        @JsonSubTypes.Type(value = Rumba.class, name = "rumba")
+        @JsonSubTypes.Type(value = Boda.class, name = "Boda"),
+        @JsonSubTypes.Type(value = QuinceAnos.class, name = "QuinceAnos"),
+        @JsonSubTypes.Type(value = Rumba.class, name = "Rumba")
 })
 public abstract class Evento {
     @Id
@@ -42,8 +44,12 @@ public abstract class Evento {
     private TipoComida tipoComida;
     @ManyToOne
     private Administrador administrador;
-    @OneToMany
-    private List<Personal> personal;
+    @ManyToMany
+    @JoinTable(
+            name = "evento_personal",
+            joinColumns = @JoinColumn(name = "evento_id"),
+            inverseJoinColumns = @JoinColumn(name = "personal_id"))
+    private List<Personal> personal= new ArrayList<>();
     @OneToOne
     private Reserva reserva;
 

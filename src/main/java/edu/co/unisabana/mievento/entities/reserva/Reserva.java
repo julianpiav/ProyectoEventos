@@ -19,7 +19,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Table(name = "RESERVA")
 @Entity
 
 public class Reserva {
@@ -34,7 +33,7 @@ public class Reserva {
     protected String metodoPago;
     @ManyToOne
     private Cliente cliente;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private Evento evento;
 
 }
