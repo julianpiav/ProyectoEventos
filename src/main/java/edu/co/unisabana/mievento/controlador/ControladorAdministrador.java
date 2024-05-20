@@ -79,8 +79,8 @@ public class ControladorAdministrador {
 
 
     @DeleteMapping("/personal/eliminar/{id}")
-    public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") Long id) {
-        //servicioPersonal.eliminarPersonal(id);
+    public ResponseEntity<Void> eliminarPersonal(@PathVariable("id") int id) {
+        personalRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
