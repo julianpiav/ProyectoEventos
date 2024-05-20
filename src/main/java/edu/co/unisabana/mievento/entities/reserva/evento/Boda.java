@@ -1,5 +1,6 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
+import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 import edu.co.unisabana.mievento.factory.personalBoda.PersonalArtisticoBoda;
@@ -9,6 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
@@ -27,67 +31,74 @@ private String pareja1;
     private final PersonalCocinaBoda personalCocinaBoda= new PersonalCocinaBoda();
 
 
+
     @Override
     public void prepararLogistica(int capacidadMaxima) {
-        if (capacidadMaxima<200){
-            this.getPersonal()
-                    .addAll(personalLogisticaBoda
-                            .obtenerPersonalPequeno(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
-        } else if (capacidadMaxima<1000 && capacidadMaxima>200) {
-            this.getPersonal()
-                    .addAll(personalLogisticaBoda
-                            .obtenerPersonalMediano(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
-        }else {
-            this.getPersonal().addAll(personalLogisticaBoda
-                    .obtenerPersonalGrande(this.getAdministrador()
-                            .getPersonal()));
+        List<Personal> personalLogistica;
+        for (Personal personal : this.getAdministrador().getPersonal()) {
+            System.out.println(personal.toString());
+            personal.getEventos().add(this);
         }
+        if (capacidadMaxima<200){
+            personalLogistica = personalLogisticaBoda
+                    .obtenerPersonalPequeno(this.getAdministrador()
+                            .getPersonal());
+        } else if (capacidadMaxima<1000 && capacidadMaxima>200) {
+            personalLogistica = personalLogisticaBoda
+                    .obtenerPersonalMediano(this.getAdministrador()
+                            .getPersonal());
+        }else {
+            personalLogistica = personalLogisticaBoda.obtenerPersonalGrande(this.getAdministrador().getPersonal());
+        }
+        for (Personal personal : personalLogistica) {
+            System.out.println(personal.getCargo());
+            personal.getEventos().add(this);
+        }
+        this.getPersonal().addAll(personalLogistica);
     }
 
     @Override
     public void prepararCocina(TipoComida tipoComida) {
-        if(tipoComida.equals(TipoComida.BASICO)){
-            this.getPersonal()
-                    .addAll(personalCocinaBoda
-                            .obtenerPersonalBasico(this.getAdministrador()
-                                    .getPersonal()
-                            )
-                    );
-        }else if(tipoComida.equals(TipoComida.FUERTE)){
-            this.getPersonal().addAll(personalCocinaBoda
-                    .obtenerPersonalFuerte(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+        for (Personal personal : this.getAdministrador().getPersonal()) {
+            System.out.println(personal.toString());
+            personal.getEventos().add(this);
         }
+        List<Personal> personalCocina;
+        if(tipoComida.equals(TipoComida.BASICO)){
+            personalCocina = personalCocinaBoda.obtenerPersonalBasico(this.getAdministrador().getPersonal());
+        }else if(tipoComida.equals(TipoComida.FUERTE)){
+            personalCocina = personalCocinaBoda.obtenerPersonalFuerte(this.getAdministrador().getPersonal());
+        }else {
+            personalCocina = new ArrayList<>();
+        }
+        for (Personal personal : personalCocina) {
+            personal.getEventos().add(this);
+
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalCocina);
     }
 
     @Override
     public void prepararArtistas(TipoMusica tipoMusica) {
-        if (tipoMusica.equals(TipoMusica.OCHENTAS)){
-            this.getPersonal().addAll(personalArtisticoBoda
-                    .obtenerPersonalOchentas(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
-        }else if(tipoMusica.equals(TipoMusica.URBANA)){
-            this.getPersonal().addAll(personalArtisticoBoda
-                    .obtenerPersonalUrbana(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
-        }else {
-            this.getPersonal().addAll(personalArtisticoBoda
-                    .obtenerPersonalClasica(this.getAdministrador()
-                            .getPersonal()
-                    )
-            );
+        for (Personal personal : this.getAdministrador().getPersonal()) {
+            System.out.println(personal.toString());
+            personal.getEventos().add(this);
         }
+        List<Personal> personalArtistas;
+        if (tipoMusica.equals(TipoMusica.OCHENTAS)){
+            personalArtistas = personalArtisticoBoda.obtenerPersonalOchentas(this.getAdministrador().getPersonal());
+        }else if(tipoMusica.equals(TipoMusica.URBANA)){
+            personalArtistas = personalArtisticoBoda.obtenerPersonalUrbana(this.getAdministrador().getPersonal());
+        }else {
+            personalArtistas = personalArtisticoBoda.obtenerPersonalClasica(this.getAdministrador().getPersonal());
+        }
+        for (Personal personal : personalArtistas) {
+            personal.getEventos().add(this);
+            System.out.println(personal.getCargo());
+
+        }
+        this.getPersonal().addAll(personalArtistas);
     }
 }

@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Entity
 public abstract class Usuario {
     @Id
     protected int documento;

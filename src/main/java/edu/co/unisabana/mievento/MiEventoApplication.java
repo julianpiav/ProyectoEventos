@@ -83,8 +83,8 @@ public class MiEventoApplication {
 			personal2.setGeneroMusical(TipoMusica.CLASICA);
 			personal2.setInstrumentoPrincipal("Piano");
 			personal2.setCargo("Musico");
-			personalRepository.save(personal2);
 			personal2.setAdministrador(administrador);
+			personalRepository.save(personal2);
 
 
 			Todero personal3 = new Todero();
