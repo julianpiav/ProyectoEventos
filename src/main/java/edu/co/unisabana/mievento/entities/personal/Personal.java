@@ -1,5 +1,6 @@
 package edu.co.unisabana.mievento.entities.personal;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
 import edu.co.unisabana.mievento.entities.usuario.Administrador;
 import jakarta.persistence.*;
@@ -15,7 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Personal {
     private boolean disponible;
     private String cargo;
     protected int experienciaAnos;
-
+    @JsonBackReference
     @ManyToOne
     private Administrador administrador;
     @ManyToMany(mappedBy = "personal")

@@ -1,7 +1,6 @@
 package edu.co.unisabana.mievento.entities.reserva.evento;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.*;
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
@@ -18,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_evento")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -30,6 +30,9 @@ import java.util.List;
         @JsonSubTypes.Type(value = QuinceAnos.class, name = "QuinceAnos"),
         @JsonSubTypes.Type(value = Rumba.class, name = "Rumba")
 })
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idEvento")
 public abstract class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +45,7 @@ public abstract class Evento {
     private int capacidadMaxima;
     private TipoMusica tipoMusica;
     private TipoComida tipoComida;
+    @JsonBackReference
     @ManyToOne
     private Administrador administrador;
     @ManyToMany (cascade = CascadeType.ALL)
@@ -50,7 +54,9 @@ public abstract class Evento {
             joinColumns = @JoinColumn(name = "evento_id"),
             inverseJoinColumns = @JoinColumn(name = "personal_id"))
     private List<Personal> personal= new ArrayList<>();
-    @OneToOne
+
+    @JsonManagedReference(value = "evento-reserva")
+    @OneToOne(mappedBy = "evento")
     private Reserva reserva;
 
     public abstract void prepararLogistica(int capacidadMaxima);

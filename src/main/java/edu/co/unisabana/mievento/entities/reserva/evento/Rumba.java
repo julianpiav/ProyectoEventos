@@ -6,25 +6,28 @@ import edu.co.unisabana.mievento.entities.personal.cocina.TipoComida;
 import edu.co.unisabana.mievento.factory.personalRumba.PersonalArtisticoRumba;
 import edu.co.unisabana.mievento.factory.personalRumba.PersonalCocinaRumba;
 import edu.co.unisabana.mievento.factory.personalRumba.PersonalLogisticaRumba;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
-
-
-
+@DiscriminatorValue(value = "Rumba")
 
 public class Rumba extends Evento{
 
-
+    @Transient
     private final PersonalArtisticoRumba personalArtisticoRumba= new PersonalArtisticoRumba();
+    @Transient
     private final PersonalCocinaRumba personalCocinaRumba= new PersonalCocinaRumba();
+    @Transient
     private final PersonalLogisticaRumba personalLogisticaRumba= new PersonalLogisticaRumba();
 
 

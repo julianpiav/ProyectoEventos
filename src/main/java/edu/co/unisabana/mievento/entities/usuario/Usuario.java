@@ -11,7 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Usuario {
     @Id
     protected int documento;

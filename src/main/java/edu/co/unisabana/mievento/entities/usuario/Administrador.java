@@ -1,5 +1,6 @@
 package edu.co.unisabana.mievento.entities.usuario;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
 import jakarta.persistence.Entity;
@@ -19,8 +20,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Administrador extends Usuario{
+    @JsonManagedReference
     @OneToMany(mappedBy = "administrador")
     private List<Personal> personal = new ArrayList<>();
+    @JsonManagedReference
     @OneToMany(mappedBy = "administrador")
     private List<Evento> eventos = new ArrayList<>();
 
