@@ -1,7 +1,6 @@
 package edu.co.unisabana.mievento;
 
 import edu.co.unisabana.mievento.entities.personal.Personal;
-import edu.co.unisabana.mievento.entities.personal.artista.Artista;
 import edu.co.unisabana.mievento.entities.personal.artista.Musico;
 import edu.co.unisabana.mievento.entities.personal.artista.TipoMusica;
 import edu.co.unisabana.mievento.entities.personal.cocina.Chef;
@@ -20,11 +19,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
 import java.util.ArrayList;
 
 @SpringBootApplication
@@ -61,7 +57,7 @@ public class MiEventoApplication {
 			administradorRepository.save(administrador);
 
 			// Crea una nueva instancia de Personal
-			Chef personal1 = new Chef();
+			Chef personal1 = new Chef(3L, "Carlos", "Gomez", "carlos.gomez@example.com", true, "Chef", "Italiana", false);
 			personal1.setNombre("Juan");
 			personal1.setApellido("Pérez");
 			personal1.setContacto("juan.perez@example.com");

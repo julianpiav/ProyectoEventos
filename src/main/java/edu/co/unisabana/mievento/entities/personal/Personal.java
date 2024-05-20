@@ -25,9 +25,22 @@ public class Personal {
     private String contacto;
     private boolean disponible;
     private String cargo;
-    private int experienciaAños;
+    protected int experienciaAños;
+
     @ManyToOne
     private Administrador administrador;
     @ManyToMany(mappedBy = "personal")
     private List<Evento> eventos;
+
+    public Personal(Administrador administrador, String cargo, String apellido, String contacto, boolean disponible, List<Evento> eventos, int experienciaAños, String nombre, Long idPersonal) {
+        this.administrador = administrador;
+        this.cargo = cargo;
+        this.apellido = apellido;
+        this.contacto = contacto;
+        this.disponible = disponible;
+        this.eventos = eventos;
+        this.experienciaAños = experienciaAños;
+        this.nombre = nombre;
+        this.idPersonal = idPersonal;
+    }
 }

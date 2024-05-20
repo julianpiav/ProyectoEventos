@@ -32,4 +32,14 @@ public class Administrador {
     private List<Personal> personal = new ArrayList<>();
     @OneToMany(mappedBy = "administrador")
     private List<Evento> eventos = new ArrayList<>();
+
+    public Administrador(int documento, String nombre, String apellido, String telefono, String correo, List<Personal> personal) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.personal = personal;
+    }
+
 }

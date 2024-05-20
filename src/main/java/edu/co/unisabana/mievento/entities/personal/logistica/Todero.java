@@ -5,10 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.ArrayList;
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 public class Todero extends Logistica{
+    public Todero(Long idPersonal, String nombre, String apellido, String contacto, boolean disponible, String cargo, int experienciaAños, ArrayList<String> implementos) {
+        super(idPersonal, nombre, apellido, contacto, disponible, cargo, experienciaAños, implementos);
+    }
 
 }
