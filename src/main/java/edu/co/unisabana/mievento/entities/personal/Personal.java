@@ -25,7 +25,7 @@ public class Personal {
     private String contacto;
     private boolean disponible;
     private String cargo;
-    protected int experienciaAños;
+    protected int experienciaAnos;
 
     @ManyToOne
     private Administrador administrador;
@@ -39,7 +39,7 @@ public class Personal {
         this.contacto = contacto;
         this.disponible = disponible;
         this.eventos = eventos;
-        this.experienciaAños = experienciaAños;
+        this.experienciaAnos = experienciaAños;
         this.nombre = nombre;
         this.idPersonal = idPersonal;
     }

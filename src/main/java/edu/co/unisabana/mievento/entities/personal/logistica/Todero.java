@@ -13,8 +13,8 @@ import java.util.ArrayList;
 @Setter
 @AllArgsConstructor
 public class Todero extends Logistica{
-    public Todero(Long idPersonal, String nombre, String apellido, String contacto, boolean disponible, String cargo, int experienciaAños, ArrayList<String> implementos) {
-        super(idPersonal, nombre, apellido, contacto, disponible, cargo, experienciaAños, implementos);
+    public Todero(Long idPersonal, String nombre, String apellido, String contacto, boolean disponible, String cargo, int experienciaAnos, ArrayList<String> implementos) {
+        super(idPersonal, nombre, apellido, contacto, disponible, cargo, experienciaAnos, implementos);
     }
 
 }

@@ -24,6 +24,8 @@ public class ControladorCliente {
     private IReservasRepository reservasRepository;
     @Autowired
     private IAdministradorRepository administradorRepository;
+    @Autowired
+    private  IClientRepository clientRepository;
 
 
     // Endpoints para reservas
@@ -43,6 +45,8 @@ public class ControladorCliente {
 
     @PostMapping(path = "/reserva/guardar")
     public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
+        clientRepository.save(reserva.getCliente());
+        reserva.getCliente().getReservas().add(reserva);
         Administrador administrador= administradorRepository.findById(reserva.getEvento().getAdministrador().getDocumento()).orElse(null);
         reserva.getEvento().setAdministrador(administrador);
         Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());

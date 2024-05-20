@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS PERSONAL (
     idArtista INTEGER, -- Nuevo campo para Artista
     generoArtistico TEXT, -- Nuevo campo para Artista
     estilo TEXT, -- Nuevo campo para Artista
-    experienciaAños INTEGER -- Nuevo campo para Artista
+    experienciaAnos INTEGER -- Nuevo campo para Artista
 );
 
 CREATE TABLE RESERVA (

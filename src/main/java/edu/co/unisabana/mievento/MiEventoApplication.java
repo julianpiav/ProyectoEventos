@@ -38,25 +38,18 @@ public class MiEventoApplication {
 	@Bean
     CommandLineRunner init() {
         return args -> {
-            clientRepository.findAll().forEach(cliente -> {
-                log.info(cliente.getNombre());
-            });
+            clientRepository.findAll().forEach(cliente -> log.info(cliente.getNombre()));
 
-            personalRepository.findAll().forEach(personal ->{
-                log.info(personal.getApellido());
-            });
+            personalRepository.findAll().forEach(personal -> log.info(personal.getApellido()));
 
-			// Crea una nueva instancia de Administrador
 			Administrador administrador = new Administrador();
 			administrador.setDocumento(123456789);
 			administrador.setNombre("Ana");
 			administrador.setApellido("Gómez");
 			administrador.setTelefono("3001234567");
 			administrador.setCorreo("ana.gomez@example.com");
-			// Guarda el administrador en la base de datos
 			administradorRepository.save(administrador);
 
-			// Crea una nueva instancia de Personal
 			Chef personal1 = new Chef(3L, "Carlos", "Gomez", "carlos.gomez@example.com", true, "Chef", "Italiana", false);
 			personal1.setNombre("Juan");
 			personal1.setApellido("Pérez");
@@ -67,10 +60,8 @@ public class MiEventoApplication {
 			personal1.setCargo("Cocinero");
 			personal1.setAdministrador(administrador);
 
-			// Guarda el personal en la base de datos
 			personalRepository.save(personal1);
 
-			// Crea más personal
 			Musico personal2 = new Musico();
 			personal2.setNombre("María");
 			personal2.setApellido("Rodríguez");
@@ -92,20 +83,15 @@ public class MiEventoApplication {
 			personal3.setAdministrador(administrador);
 
 
-
-			// Guarda el personal en la base de datos
-
 			personalRepository.save(personal3);
 
 
 
-			// Añade el personal al administrador
 			List<Personal> personalList = new ArrayList<>();
 			personalList.add(personal1);
 			personalList.add(personal2);
 			personalList.add(personal3);
 			administrador.setPersonal(personalList);
-			// Guarda el administrador en la base de datos
 			administradorRepository.save(administrador);
 
         };

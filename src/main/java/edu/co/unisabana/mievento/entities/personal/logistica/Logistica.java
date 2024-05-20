@@ -16,8 +16,8 @@ public abstract class Logistica extends Personal {
 
     private ArrayList<String> implementos;
 
-    public Logistica(Long idPersonal, String nombre, String apellido, String contacto, boolean disponible, String cargo, int experienciaAños, ArrayList<String> implementos) {
-        super(idPersonal, nombre, apellido, contacto, disponible, cargo, experienciaAños, null, null);
+    public Logistica(Long idPersonal, String nombre, String apellido, String contacto, boolean disponible, String cargo, int experienciaAnos, ArrayList<String> implementos) {
+        super(idPersonal, nombre, apellido, contacto, disponible, cargo, experienciaAnos, null, null);
         this.implementos = implementos;
     }
 

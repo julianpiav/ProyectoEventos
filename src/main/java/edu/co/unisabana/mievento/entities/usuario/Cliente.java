@@ -1,5 +1,6 @@
 package edu.co.unisabana.mievento.entities.usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.co.unisabana.mievento.entities.reserva.Reserva;
@@ -25,6 +26,6 @@ public class Cliente {
     private String telefono;
     private String correo;
     @OneToMany(mappedBy = "cliente")
-    private List<Reserva> reservas;
+    private List<Reserva> reservas= new ArrayList<>();
 
 }
