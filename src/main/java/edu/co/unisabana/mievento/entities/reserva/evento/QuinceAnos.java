@@ -39,8 +39,8 @@ private String cumpleanera;
             personalLogistica = personalLogisticaQuinceAnos.obtenerPersonalGrande(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalLogistica) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalLogistica);
@@ -57,8 +57,8 @@ private String cumpleanera;
             personalCocina = new ArrayList<>();
         }
         for (Personal personal : personalCocina) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalCocina);
@@ -75,8 +75,8 @@ private String cumpleanera;
             personalArtistas = personalArtisticoQuinceAnos.obtenerPersonalClasica(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalArtistas) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalArtistas);

@@ -36,7 +36,7 @@ public class MiEventoApplication {
 	@Autowired
 	private IAdministradorRepository administradorRepository;
 	private static final Logger log = LoggerFactory.getLogger(MiEventoApplication.class);
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		SpringApplication.run(MiEventoApplication.class, args);
 	}
 	@Bean
@@ -111,10 +111,6 @@ public class MiEventoApplication {
 			administrador.setPersonal(personalList);
 			// Guarda el administrador en la base de datos
 			administradorRepository.save(administrador);
-
-
-
-
 
         };
     }

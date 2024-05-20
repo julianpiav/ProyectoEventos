@@ -43,10 +43,10 @@ public class ControladorCliente {
 
     @PostMapping(path = "/reserva/guardar")
     public ResponseEntity<String> guardarReserva(@RequestBody Reserva reserva) {
-        Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
         Administrador administrador= administradorRepository.findById(reserva.getEvento().getAdministrador().getDocumento()).orElse(null);
+        reserva.getEvento().setAdministrador(administrador);
+        Evento eventoListo= fabricaEventos.prepararEvento(reserva.getEvento());
         administrador.getEventos().add(eventoListo);
-        eventoListo.setAdministrador(administrador);
         reserva.setEvento(eventoListo);
         reservasRepository.save(reserva);
         return new ResponseEntity<>("Reserva guardada con éxito", HttpStatus.CREATED);

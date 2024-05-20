@@ -43,8 +43,8 @@ public class Rumba extends Evento{
             personalLogistica = personalLogisticaRumba.obtenerPersonalGrande(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalLogistica) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalLogistica);
@@ -61,8 +61,8 @@ public class Rumba extends Evento{
             personalCocina = new ArrayList<>();
         }
         for (Personal personal : personalCocina) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalCocina);
@@ -79,9 +79,8 @@ public class Rumba extends Evento{
             personalArtistas = personalArtisticoRumba.obtenerPersonalClasica(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalArtistas) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
-
         }
         this.getPersonal().addAll(personalArtistas);
     }

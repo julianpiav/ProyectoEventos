@@ -51,7 +51,7 @@ private String pareja1;
             personalLogistica = personalLogisticaBoda.obtenerPersonalGrande(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalLogistica) {
-            System.out.println(personal.getCargo());
+            personal.setDisponible(false);
             personal.getEventos().add(this);
         }
         this.getPersonal().addAll(personalLogistica);
@@ -72,20 +72,14 @@ private String pareja1;
             personalCocina = new ArrayList<>();
         }
         for (Personal personal : personalCocina) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-
-            System.out.println(personal.getCargo());
-
         }
         this.getPersonal().addAll(personalCocina);
     }
 
     @Override
     public void prepararArtistas(TipoMusica tipoMusica) {
-        for (Personal personal : this.getAdministrador().getPersonal()) {
-            System.out.println(personal.toString());
-            personal.getEventos().add(this);
-        }
         List<Personal> personalArtistas;
         if (tipoMusica.equals(TipoMusica.OCHENTAS)){
             personalArtistas = personalArtisticoBoda.obtenerPersonalOchentas(this.getAdministrador().getPersonal());
@@ -95,8 +89,8 @@ private String pareja1;
             personalArtistas = personalArtisticoBoda.obtenerPersonalClasica(this.getAdministrador().getPersonal());
         }
         for (Personal personal : personalArtistas) {
+            personal.setDisponible(false);
             personal.getEventos().add(this);
-            System.out.println(personal.getCargo());
 
         }
         this.getPersonal().addAll(personalArtistas);
