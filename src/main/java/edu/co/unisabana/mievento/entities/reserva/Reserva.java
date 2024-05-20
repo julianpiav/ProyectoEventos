@@ -8,6 +8,7 @@ import edu.co.unisabana.mievento.entities.personal.cocina.Cocina;
 import edu.co.unisabana.mievento.entities.personal.logistica.Logistica;
 import edu.co.unisabana.mievento.entities.reserva.evento.Evento;
 import edu.co.unisabana.mievento.entities.reserva.lugar.Lugar;
+import edu.co.unisabana.mievento.entities.usuario.Cliente;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +32,8 @@ public class Reserva {
     private String direccion;
     private String fecha;
     protected String metodoPago;
+    @ManyToOne
+    private Cliente cliente;
     @OneToOne
     private Evento evento;
 

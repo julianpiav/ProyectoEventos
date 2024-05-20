@@ -23,10 +23,9 @@ public class ControladorAdministrador {
     @Autowired
     private IPersonalRepository personalRepository;
 
-    //Ya funciona
     @GetMapping(path = "/getUsers")
     public ResponseEntity<List<Cliente>> obtenerClientes() {
-        List<Cliente> clienteList = new ArrayList<>(); // Fix the issue by importing ArrayList
+        List<Cliente> clienteList = new ArrayList<>();
         Iterable<Cliente> iterableClientes = clientRepository.findAll();
         iterableClientes.forEach(clienteList::add);
         return new ResponseEntity<>(clienteList, HttpStatus.OK);
