@@ -21,4 +21,5 @@ public class Personal {
     private String contacto;
     private boolean disponible;
     private String cargo;
+    private int experienciaAños;
 }
