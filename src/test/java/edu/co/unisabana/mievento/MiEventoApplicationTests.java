@@ -9,5 +9,4 @@ class MiEventoApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
