@@ -1,10 +1,10 @@
 package edu.co.unisabana.mievento.entities.personal;
 
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PersonalArtistico {
-    ArrayList<Personal> obtenerPersonalClasica(ArrayList<Personal> personal);
-    ArrayList<Personal> obtenerPersonalUrbana(ArrayList<Personal> personal);
-    ArrayList<Personal> obtenerPersonalOchentas(ArrayList<Personal> personal);
+    List<Personal> obtenerPersonalClasica(List<Personal> personal);
+    List<Personal> obtenerPersonalUrbana(List<Personal> personal);
+    List<Personal> obtenerPersonalOchentas(List<Personal> personal);
 }

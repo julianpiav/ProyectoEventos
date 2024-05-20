@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -43,7 +43,7 @@ public abstract class Evento {
     @ManyToOne
     private Administrador administrador;
     @OneToMany
-    private ArrayList<Personal> personal;
+    private List<Personal> personal;
     @OneToOne
     private Reserva reserva;
 

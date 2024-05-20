@@ -4,13 +4,14 @@ import edu.co.unisabana.mievento.entities.personal.Personal;
 import edu.co.unisabana.mievento.entities.personal.PersonalLogistica;
 import edu.co.unisabana.mievento.entities.personal.logistica.Todero;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class PersonalLogisticaQuinceAnos implements PersonalLogistica {
 
     @Override
-    public ArrayList<Personal> obtenerPersonalPequeno(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalPequeno(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Todero &&  p.isDisponible())
                 .limit(4)
@@ -19,7 +20,7 @@ public class PersonalLogisticaQuinceAnos implements PersonalLogistica {
     }
 
     @Override
-    public ArrayList<Personal> obtenerPersonalMediano(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalMediano(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Todero &&  p.isDisponible())
                 .limit(8)
@@ -27,7 +28,7 @@ public class PersonalLogisticaQuinceAnos implements PersonalLogistica {
     }
 
     @Override
-    public ArrayList<Personal> obtenerPersonalGrande(ArrayList<Personal> personal) {
+    public List<Personal> obtenerPersonalGrande(List<Personal> personal) {
         return personal.stream()
                 .filter(p -> p instanceof Todero &&  p.isDisponible())
                 .limit(12)

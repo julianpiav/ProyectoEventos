@@ -1,9 +1,9 @@
 package edu.co.unisabana.mievento.entities.personal;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PersonalLogistica {
-    ArrayList<Personal> obtenerPersonalPequeno(ArrayList<Personal> personal);
-    ArrayList<Personal> obtenerPersonalMediano(ArrayList<Personal> personal) ;
-    ArrayList<Personal> obtenerPersonalGrande(ArrayList<Personal> personal);
+    List<Personal> obtenerPersonalPequeno(List<Personal> personal);
+    List<Personal> obtenerPersonalMediano(List<Personal> personal) ;
+    List<Personal> obtenerPersonalGrande(List<Personal> personal);
 }

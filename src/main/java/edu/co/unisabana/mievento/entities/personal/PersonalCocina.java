@@ -1,8 +1,8 @@
 package edu.co.unisabana.mievento.entities.personal;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface PersonalCocina {
-    ArrayList<Personal> obtenerPersonalBasico(ArrayList<Personal> personal);
-    ArrayList<Personal> obtenerPersonalFuerte(ArrayList<Personal> personal);
+    List<Personal> obtenerPersonalBasico(List<Personal> personal);
+    List<Personal> obtenerPersonalFuerte(List<Personal> personal);
 }
