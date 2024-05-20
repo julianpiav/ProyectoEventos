@@ -16,8 +16,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
-@Table(name = "CLIENTES")
 @Entity
 public class Cliente {
     @Id
@@ -26,7 +24,7 @@ public class Cliente {
     private String apellido;
     private String telefono;
     private String correo;
-    @OneToMany
+    @OneToMany(mappedBy = "cliente")
     private List<Reserva> reservas;
 
 }
